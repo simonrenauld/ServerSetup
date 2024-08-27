@@ -79,4 +79,7 @@
      * Configure logging to monitor system performance and issues.
     
    * ![image](https://github.com/user-attachments/assets/a89d9cb1-9541-4645-91c5-6f39ecc98782)
+  
+   * ![image](https://github.com/user-attachments/assets/7917d65d-0181-4158-b057-a55818a36115)
+
 
