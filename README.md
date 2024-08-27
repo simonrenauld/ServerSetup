@@ -77,3 +77,6 @@
 6. **Documentation and Logging**
    * **Set Up Logs:**
      * Configure logging to monitor system performance and issues.
+    
+   * ![image](https://github.com/user-attachments/assets/a89d9cb1-9541-4645-91c5-6f39ecc98782)
+
