@@ -11,4 +11,4 @@
 - **Downloads:** Tools, packages, and OS images are available at [Hetzner Downloads](https://download.hetzner.com) (Username: hetzner, Password: download).
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com).
 
-### Accessing the Server
+### 1. Accessing the Server
