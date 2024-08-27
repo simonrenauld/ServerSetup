@@ -63,7 +63,7 @@
 
        ```bash
        sudo ufw allow OpenSSH
-       sudo ufw enable
+       sudo ufw enable 
        ```
    * **SSH Key Authentication:**
      * Set up SSH key-based authentication for more secure access.
