@@ -1,5 +1,9 @@
 # Cloud Server Setup
 
+
+01_Infrastructure and Hardware Setup
+02_
+
 ### Why Creating Server from Rescue
 
 - Cost cheap and flexibility
