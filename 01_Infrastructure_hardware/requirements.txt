@@ -1,4 +1,4 @@
-graphviz
 requests
 numpy
 pandas
+graphviz

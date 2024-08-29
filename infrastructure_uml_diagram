@@ -1,0 +1,37 @@
+digraph "Infrastructure UML" {
+	rankdir=LR size="10,8"
+	Server [label="Main Server"]
+	OS [label="Operating Systems
+(Linux, Windows Server)"]
+	WebServers [label="Web Servers
+(Nginx, Apache)"]
+	Databases [label="Databases
+(MySQL, PostgreSQL, MongoDB)"]
+	Containers [label="Containers
+(Docker, Kubernetes)"]
+	DataScience [label="Data Science Tools
+(Jupyter, RStudio)"]
+	DataEngineering [label="Data Engineering Tools
+(Hadoop, Spark)"]
+	AIFrameworks [label="AI/ML Frameworks
+(LLaMA, TensorFlow, PyTorch)"]
+	Governance [label="Data Governance
+(Cataloging, Quality, Compliance)"]
+	Backup [label="Backup System
+(Nextcloud)"]
+	MediaServer [label="Media Server
+(Jellyfin)"]
+	AIforBusiness [label="AI for Business
+(Chatbot, CRM Integration, Proposal Generation)"]
+	Server -> OS
+	OS -> WebServers
+	OS -> Databases
+	OS -> Containers
+	OS -> DataScience
+	OS -> DataEngineering
+	OS -> AIFrameworks
+	OS -> Governance
+	OS -> Backup
+	OS -> MediaServer
+	OS -> AIforBusiness
+}

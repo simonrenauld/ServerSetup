@@ -9,6 +9,8 @@
 - Cost cheap and flexibility
 - Activated, currently booted in the Rescue System
 
+python install_dependencies.py
+01_Infrastructure_hardware\requirements.txt
 ### Notes
 
 - **Outgoing Traffic Blocked:** Ports 25 and 465 are blocked by default; you can request unblocking for a valid use case.
