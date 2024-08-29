@@ -1,80 +1,93 @@
-<div class="mermaid">
-    graph TD
-    Internet((Internet)) -->|WAN| Firewall[Firewall]
-    Firewall --> Router[Router]
-    Router --> Switch[Core Switch]
-    
-    subgraph "<b>Hetzner Server Infrastructure</b>"
-        direction TB
-        UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]
-        WebServer[Web Servers<br/><img src='https://nginx.org/favicon.ico' width='20' height='20' /><br/>Nginx, Apache]
-        DatabaseServer[Databases<br/><img src='https://www.mysql.com/common/logos/logo-mysql-170x115.png' width='20' height='20' /><br/>MySQL, PostgreSQL, MongoDB]
-        ContainerHost[Containers<br/><img src='https://www.docker.com/favicon.ico' width='20' height='20' /><br/>Docker, Kubernetes]
-        AIServer[AI/ML Server<br/><img src='https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg' width='20' height='20' /><br/>TensorFlow, PyTorch, LLaMA]
-        DataScienceServer[Data Science Server<br/><img src='https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg' width='20' height='20' /><br/>Jupyter, RStudio]
-        BackupServer[Backup Server<br/><img src='https://nextcloud.com/wp-content/uploads/2018/10/nextcloud-logo-1024x363.png' width='20' height='20' /><br/>Nextcloud, Rsync]
-        MediaServer[Media Server<br/><img src='https://jellyfin.org/images/logo-light.svg' width='20' height='20' /><br/>Jellyfin]
-        MonitoringServer[Monitoring<br/><img src='https://prometheus.io/assets/prometheus_logo_grey.svg' width='20' height='20' /><br/>Prometheus, Grafana]
-        Workstations[Workstations]
-        MobileDevices[Mobile Devices]
-        IoTDevices[IoT Devices]
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Diagram</title>
+    <!-- Include Mermaid.js library -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</head>
+<body>
+    <div class="mermaid">
+        graph TD
+        Internet((Internet)) -->|WAN| Firewall[Firewall]
+        Firewall --> Router[Router]
+        Router --> Switch[Core Switch]
         
-        subgraph "<b>Data Governance</b>"
-            DataCatalog[Data Catalog<br/><img src='https://atlas.apache.org/images/logo.svg' width='20' height='20' /><br/>Apache Atlas]
-            DataQuality[Data Quality<br/>Great Expectations]
-            DataSecurity[Data Security<br/><img src='https://ranger.apache.org/images/ranger_logo.png' width='20' height='20' /><br/>Apache Ranger]
+        subgraph "<b>Hetzner Server Infrastructure</b>"
+            direction TB
+            UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]
+            WebServer[Web Servers<br/><img src='https://nginx.org/favicon.ico' width='20' height='20' /><br/>Nginx, Apache]
+            DatabaseServer[Databases<br/><img src='https://www.mysql.com/common/logos/logo-mysql-170x115.png' width='20' height='20' /><br/>MySQL, PostgreSQL, MongoDB]
+            ContainerHost[Containers<br/><img src='https://www.docker.com/favicon.ico' width='20' height='20' /><br/>Docker, Kubernetes]
+            AIServer[AI/ML Server<br/><img src='https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg' width='20' height='20' /><br/>TensorFlow, PyTorch, LLaMA]
+            DataScienceServer[Data Science Server<br/><img src='https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg' width='20' height='20' /><br/>Jupyter, RStudio]
+            BackupServer[Backup Server<br/><img src='https://nextcloud.com/wp-content/uploads/2018/10/nextcloud-logo-1024x363.png' width='20' height='20' /><br/>Nextcloud, Rsync]
+            MediaServer[Media Server<br/><img src='https://jellyfin.org/images/logo-light.svg' width='20' height='20' /><br/>Jellyfin]
+            MonitoringServer[Monitoring<br/><img src='https://prometheus.io/assets/prometheus_logo_grey.svg' width='20' height='20' /><br/>Prometheus, Grafana]
             
-            DataCatalog --> DataQuality
-            DataQuality --> DataSecurity
+            subgraph "<b>Data Governance</b>"
+                DataCatalog[Data Catalog<br/><img src='https://atlas.apache.org/images/logo.svg' width='20' height='20' /><br/>Apache Atlas]
+                DataQuality[Data Quality<br/>Great Expectations]
+                DataSecurity[Data Security<br/><img src='https://ranger.apache.org/images/ranger_logo.png' width='20' height='20' /><br/>Apache Ranger]
+                
+                DataCatalog --> DataQuality
+                DataQuality --> DataSecurity
+                DataSecurity --> BackupServer
+            end
+            
+            UnraidServer --> WebServer
+            UnraidServer --> DatabaseServer
+            UnraidServer --> ContainerHost
+            UnraidServer --> AIServer
+            UnraidServer --> DataScienceServer
+            UnraidServer --> BackupServer
+            UnraidServer --> MediaServer
+            UnraidServer --> MonitoringServer
+            UnraidServer --> DataCatalog
         end
         
-        UnraidServer --> WebServer
-        UnraidServer --> DatabaseServer
-        UnraidServer --> ContainerHost
-        UnraidServer --> AIServer
-        UnraidServer --> DataScienceServer
-        UnraidServer --> BackupServer
-        UnraidServer --> MediaServer
-        UnraidServer --> MonitoringServer
-        UnraidServer --> DataCatalog
-        Workstations --> UnraidServer
-        MobileDevices --> UnraidServer
-        IoTDevices --> UnraidServer
-        DataCatalog --> DatabaseServer
-        MonitoringServer --> UnraidServer
-    end
-    
-    subgraph "<b>Network Services</b>"
-        direction TB
-        DHCP[DHCP Server]
-        DNS[DNS Server]
-        VPN[VPN Server<br/>WireGuard]
+        subgraph "<b>Network Services</b>"
+            direction TB
+            DHCP[DHCP Server]
+            DNS[DNS Server]
+            VPN[VPN Server<br/>WireGuard]
+            
+            DHCP --> DNS
+            DNS --> VPN
+            VPN --> DHCP
+        end
         
-        DHCP --> DNS
-        DNS --> VPN
-        DNS --> DatabaseServer
-        DHCP --> Workstations
-        DHCP --> MobileDevices
-        DHCP --> IoTDevices
-        VPN --> MobileDevices
-        VPN --> Workstations
-        VPN --> IoTDevices
-    end
-    
-    Switch --> HetznerServerInfrastructure
-    Switch --> NetworkServices
-    Switch --> EndDevices
-    
-    EndDevices --> Workstations
-    EndDevices --> MobileDevices
-    EndDevices --> IoTDevices
+        subgraph "<b>End Devices</b>"
+            direction TB
+            Workstations[Workstations]
+            MobileDevices[Mobile Devices]
+            IoTDevices[IoT Devices]
+            
+            Workstations --> MobileDevices
+            Workstations --> IoTDevices
+            MobileDevices --> IoTDevices
+        end
 
-    classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
-    classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
-    classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
-    classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
+        Switch --> UnraidServer
+        Switch --> DNS
+        Switch --> Workstations
+        Workstations --> Router
+        MobileDevices --> Router
+        IoTDevices --> Router
+        VPN --> Router
 
-    class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity server;
-    class DHCP,DNS,VPN network;
-    class Workstations,MobileDevices,IoTDevices enddevices;
-</div>
+        classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
+        classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
+        classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
+        classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
+
+        class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity server;
+        class DHCP,DNS,VPN network;
+        class Workstations,MobileDevices,IoTDevices enddevices;
+    </div>
+</body>
+</html>
