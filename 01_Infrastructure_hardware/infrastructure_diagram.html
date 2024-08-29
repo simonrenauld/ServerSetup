@@ -9,44 +9,6 @@
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true });
     </script>
-       </div>
-       <div class="explanation" style="position: absolute; top: 0; right: 0;"></div>
-        <h2>Infrastructure Components</h2>
-        <div class="infrastructure-components">
-            <ul>
-                <li><b>Unraid Server:</b> This server hosts the Unraid operating system and manages various services.</li>
-                <li><b>Web Servers:</b> These servers host websites using Nginx and Apache.</li>
-                <li><b>Databases:</b> These servers host MySQL, PostgreSQL, and MongoDB databases.</li>
-                <li><b>Containers:</b> This server hosts Docker and Kubernetes containers.</li>
-                <li><b>AI/ML Server:</b> This server is used for AI and machine learning tasks using TensorFlow, PyTorch, and LLaMA.</li>
-                <li><b>Data Science Server:</b> This server is used for data science tasks using Jupyter and RStudio.</li>
-                <li><b>Backup Server:</b> This server is used for backups using Nextcloud and Rsync.</li>
-                <li><b>Media Server:</b> This server is used for media streaming using Jellyfin.</li>
-                <li><b>Monitoring:</b> This server is used for monitoring using Prometheus and Grafana.</li>
-            </ul>
-        </div>
-           <h2>Data Governance</h2>
-           <ul>
-               <li><b>Data Catalog:</b> This component is responsible for managing metadata using Apache Atlas.</li>
-               <li><b>Data Quality:</b> This component ensures data quality using Great Expectations.</li>
-               <li><b>Data Security:</b> This component provides data security using Apache Ranger.</li>
-           </ul>
-           <h2>Network Services</h2>
-           <ul>
-               <li><b>DHCP Server:</b> This server provides dynamic IP address allocation.</li>
-               <li><b>DNS Server:</b> This server resolves domain names to IP addresses.</li>
-               <li><b>VPN Server:</b> This server provides secure remote access using WireGuard.</li>
-           </ul>
-           <h2>End Devices</h2>
-           <ul>
-               <li><b>Workstations:</b> These devices are used by users for their daily work.</li>
-               <li><b>Mobile Devices:</b> These devices include smartphones and tablets.</li>
-               <li><b>IoT Devices:</b> These devices are part of the Internet of Things (IoT) ecosystem.</li>
-           </ul>
-       </div>
-   </body>
-   </html>
-   
 </head>
 <body>
     <div class="mermaid">
@@ -56,8 +18,7 @@
         Router --> Switch[Core Switch]
         
         subgraph "<b>Hetzner Server Infrastructure</b>"
-            direction TB
-            UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]
+            UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]:::server
             WebServer[Web Servers<br/><img src='https://nginx.org/favicon.ico' width='20' height='20' /><br/>Nginx, Apache]
             DatabaseServer[Databases<br/><img src='https://www.mysql.com/common/logos/logo-mysql-170x115.png' width='20' height='20' /><br/>MySQL, PostgreSQL, MongoDB]
             ContainerHost[Containers<br/><img src='https://www.docker.com/favicon.ico' width='20' height='20' /><br/>Docker, Kubernetes]
@@ -89,7 +50,6 @@
         end
         
         subgraph "<b>Network Services</b>"
-            direction TB
             DHCP[DHCP Server]
             DNS[DNS Server]
             VPN[VPN Server<br/>WireGuard]
@@ -100,7 +60,6 @@
         end
         
         subgraph "<b>End Devices</b>"
-            direction TB
             Workstations[Workstations]
             MobileDevices[Mobile Devices]
             IoTDevices[IoT Devices]
