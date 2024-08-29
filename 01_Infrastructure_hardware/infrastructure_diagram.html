@@ -1,152 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enhanced Infrastructure Diagram</title>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({
-            startOnLoad: true,
-            theme: 'base',
-            themeVariables: {
-                primaryColor: '#ffcc00',
-                primaryTextColor: '#000',
-                primaryBorderColor: '#333',
-                lineColor: '#666',
-                tertiaryColor: '#f0f0f0',
-            },
-            securityLevel: 'loose',
-            flowchart: {
-                useMaxWidth: false,
-                htmlLabels: true,
-                curve: 'linear',
-            },
-            zoom: {
-                enabled: true,
-                scale: 1,
-                useMaxWidth: true,
-            },
-        });
-    </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
-        }
-        .comment-box {
-            margin-top: 20px;
-            padding: 15px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            max-width: 800px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        .comment-box h3 {
-            margin-top: 0;
-        }
-        .comment-box ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .comment-box li {
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
-<body>
-    <div class="mermaid">
-        graph TD
-        Internet((Internet)) -->|WAN| Firewall[Firewall]
-        Firewall --> Router[Router]
-        Router --> Switch[Core Switch]
+<div class="mermaid">
+    graph TD
+    Internet((Internet)) -->|WAN| Firewall[Firewall]
+    Firewall --> Router[Router]
+    Router --> Switch[Core Switch]
+    
+    subgraph "<b>Hetzner Server Infrastructure</b>"
+        direction TB
+        UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]
+        WebServer[Web Servers<br/><img src='https://nginx.org/favicon.ico' width='20' height='20' /><br/>Nginx, Apache]
+        DatabaseServer[Databases<br/><img src='https://www.mysql.com/common/logos/logo-mysql-170x115.png' width='20' height='20' /><br/>MySQL, PostgreSQL, MongoDB]
+        ContainerHost[Containers<br/><img src='https://www.docker.com/favicon.ico' width='20' height='20' /><br/>Docker, Kubernetes]
+        AIServer[AI/ML Server<br/><img src='https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg' width='20' height='20' /><br/>TensorFlow, PyTorch, LLaMA]
+        DataScienceServer[Data Science Server<br/><img src='https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg' width='20' height='20' /><br/>Jupyter, RStudio]
+        BackupServer[Backup Server<br/><img src='https://nextcloud.com/wp-content/uploads/2018/10/nextcloud-logo-1024x363.png' width='20' height='20' /><br/>Nextcloud, Rsync]
+        MediaServer[Media Server<br/><img src='https://jellyfin.org/images/logo-light.svg' width='20' height='20' /><br/>Jellyfin]
+        MonitoringServer[Monitoring<br/><img src='https://prometheus.io/assets/prometheus_logo_grey.svg' width='20' height='20' /><br/>Prometheus, Grafana]
+        Workstations[Workstations]
+        MobileDevices[Mobile Devices]
+        IoTDevices[IoT Devices]
         
-        subgraph "<b>Hetzner Server Infrastructure</b>"
-            direction TB
-            UnraidServer[Unraid Server<br/><img src='https://unraid.net/favicon.ico' width='20' height='20' />]
-            WebServer[Web Servers<br/><img src='https://nginx.org/favicon.ico' width='20' height='20' /><br/>Nginx, Apache]
-            DatabaseServer[Databases<br/><img src='https://www.mysql.com/common/logos/logo-mysql-170x115.png' width='20' height='20' /><br/>MySQL, PostgreSQL, MongoDB]
-            ContainerHost[Containers<br/><img src='https://www.docker.com/favicon.ico' width='20' height='20' /><br/>Docker, Kubernetes]
-            AIServer[AI/ML Server<br/><img src='https://upload.wikimedia.org/wikipedia/commons/2/2d/Tensorflow_logo.svg' width='20' height='20' /><br/>TensorFlow, PyTorch, LLaMA]
-            DataScienceServer[Data Science Server<br/><img src='https://jupyter.org/assets/logos/rectanglelogo-greytext-orangebody-greymoons.svg' width='20' height='20' /><br/>Jupyter, RStudio]
-            BackupServer[Backup Server<br/><img src='https://nextcloud.com/wp-content/uploads/2018/10/nextcloud-logo-1024x363.png' width='20' height='20' /><br/>Nextcloud, Rsync]
-            MediaServer[Media Server<br/><img src='https://jellyfin.org/images/logo-light.svg' width='20' height='20' /><br/>Jellyfin]
-            MonitoringServer[Monitoring<br/><img src='https://prometheus.io/assets/prometheus_logo_grey.svg' width='20' height='20' /><br/>Prometheus, Grafana]
+        subgraph "<b>Data Governance</b>"
+            DataCatalog[Data Catalog<br/><img src='https://atlas.apache.org/images/logo.svg' width='20' height='20' /><br/>Apache Atlas]
+            DataQuality[Data Quality<br/>Great Expectations]
+            DataSecurity[Data Security<br/><img src='https://ranger.apache.org/images/ranger_logo.png' width='20' height='20' /><br/>Apache Ranger]
             
-            subgraph "<b>Data Governance</b>"
-                DataCatalog[Data Catalog<br/><img src='https://atlas.apache.org/images/logo.svg' width='20' height='20' /><br/>Apache Atlas]
-                DataQuality[Data Quality<br/>Great Expectations]
-                DataSecurity[Data Security<br/><img src='https://ranger.apache.org/images/ranger_logo.png' width='20' height='20' /><br/>Apache Ranger]
-                
-                DataCatalog --> DataQuality
-                DataQuality --> DataSecurity
-            end
-            
-            UnraidServer --> WebServer
-            UnraidServer --> DatabaseServer
-            UnraidServer --> ContainerHost
-            UnraidServer --> AIServer
-            UnraidServer --> DataScienceServer
-            UnraidServer --> BackupServer
-            UnraidServer --> MediaServer
-            UnraidServer --> MonitoringServer
-            UnraidServer --> DataCatalog
+            DataCatalog --> DataQuality
+            DataQuality --> DataSecurity
         end
         
-        subgraph "<b>Network Services</b>"
-            direction TB
-            DHCP[DHCP Server]
-            DNS[DNS Server]
-            VPN[VPN Server<br/>WireGuard]
-            
-            DHCP --> DNS
-            DNS --> VPN
-            DNS --> DatabaseServer
-        end
+        UnraidServer --> WebServer
+        UnraidServer --> DatabaseServer
+        UnraidServer --> ContainerHost
+        UnraidServer --> AIServer
+        UnraidServer --> DataScienceServer
+        UnraidServer --> BackupServer
+        UnraidServer --> MediaServer
+        UnraidServer --> MonitoringServer
+        UnraidServer --> DataCatalog
+        Workstations --> UnraidServer
+        MobileDevices --> UnraidServer
+        IoTDevices --> UnraidServer
+        DataCatalog --> DatabaseServer
+        MonitoringServer --> UnraidServer
+    end
+    
+    subgraph "<b>Network Services</b>"
+        direction TB
+        DHCP[DHCP Server]
+        DNS[DNS Server]
+        VPN[VPN Server<br/>WireGuard]
         
-        subgraph "<b>End Devices</b>"
-            direction TB
-            Workstations[Workstations]
-            MobileDevices[Mobile Devices]
-            IoTDevices[IoT Devices]
-            
-            Workstations --> MobileDevices
-            Workstations --> IoTDevices
-            MobileDevices --> IoTDevices
-        end
-        
-        Switch --> HetznerServerInfrastructure
-        Switch --> NetworkServices
-        Switch --> EndDevices
+        DHCP --> DNS
+        DNS --> VPN
+        DNS --> DatabaseServer
+        DHCP --> Workstations
+        DHCP --> MobileDevices
+        DHCP --> IoTDevices
+        VPN --> MobileDevices
+        VPN --> Workstations
+        VPN --> IoTDevices
+    end
+    
+    Switch --> HetznerServerInfrastructure
+    Switch --> NetworkServices
+    Switch --> EndDevices
+    
+    EndDevices --> Workstations
+    EndDevices --> MobileDevices
+    EndDevices --> IoTDevices
 
-        classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
-        classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
-        classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
-        classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
+    classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
+    classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
+    classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
+    classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
 
-        class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity server;
-        class DHCP,DNS,VPN network;
-        class Workstations,MobileDevices,IoTDevices enddevices;
-    </div>
-
-    <div class="comment-box">
-        <h3>Infrastructure Component Descriptions</h3>
-        <ul>
-            <li><strong>Unraid Server:</strong> Central management server that handles storage, VMs, and Docker containers, providing flexibility and redundancy.</li>
-            <li><strong>Web Servers:</strong> Hosts web services using Nginx and Apache for serving web pages and applications.</li>
-            <li><strong>Databases:</strong> Manages and stores structured data using MySQL, PostgreSQL, and MongoDB.</li>
-            <li><strong>Containers:</strong> Runs containerized applications using Docker and Kubernetes for orchestration.</li>
-            <li><strong>AI/ML Server:</strong> Runs AI and machine learning workloads using TensorFlow, PyTorch, and LLaMA models.</li>
-            <li><strong>Data Science Server:</strong> Provides an environment for data analysis using tools like Jupyter Notebook and RStudio.</li>
-            <li><strong>Backup Server:</strong> Manages backups using Nextcloud and Rsync, ensuring data is secure and recoverable.</li>
-            <li><strong>Media Server:</strong> Stores and streams multimedia content using Jellyfin.</li>
-            <li><strong>Monitoring:</strong> Monitors system performance and health using Prometheus and Grafana.</li>
-            <li><strong>Data Governance:</strong> Ensures data quality, security, and management using Apache Atlas, Great Expectations, and Apache Ranger.</li>
-            <li><strong>Network Services:</strong> Includes DHCP, DNS, and VPN servers to manage IP addresses, resolve domain names, and provide secure remote access.</li>
-            <li><strong>End Devices:</strong> The devices that interact with the infrastructure, including workstations, mobile devices, and IoT devices.</li>
-        </ul>
-    </div>
-</body>
-</html>
+    class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity server;
+    class DHCP,DNS,VPN network;
+    class Workstations,MobileDevices,IoTDevices enddevices;
+</div>
