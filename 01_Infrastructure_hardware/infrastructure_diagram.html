@@ -9,6 +9,21 @@
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: true });
     </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .comment-box {
+            margin-top: 30px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .comment-box h3 {
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
     <div class="mermaid">
@@ -27,6 +42,7 @@
             BackupServer[Backup Server<br/><img src='https://nextcloud.com/wp-content/uploads/2018/10/nextcloud-logo-1024x363.png' width='20' height='20' /><br/>Nextcloud, Rsync]
             MediaServer[Media Server<br/><img src='https://jellyfin.org/images/logo-light.svg' width='20' height='20' /><br/>Jellyfin]
             MonitoringServer[Monitoring<br/><img src='https://prometheus.io/assets/prometheus_logo_grey.svg' width='20' height='20' /><br/>Prometheus, Grafana]
+            GitHub[GitHub Repository<br/><img src='https://github.githubassets.com/favicons/favicon.svg' width='20' height='20' /><br/>Source Control]:::server
             
             subgraph "<b>Data Governance</b>"
                 DataCatalog[Data Catalog<br/><img src='https://atlas.apache.org/images/logo.svg' width='20' height='20' /><br/>Apache Atlas]
@@ -47,6 +63,8 @@
             UnraidServer --> MediaServer
             UnraidServer --> MonitoringServer
             UnraidServer --> DataCatalog
+            UnraidServer --> GitHub
+            GitHub --> DataScienceServer
         end
         
         subgraph "<b>Network Services</b>"
@@ -82,9 +100,18 @@
         classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
         classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
 
-        class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity server;
+        class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity,GitHub server;
         class DHCP,DNS,VPN network;
         class Workstations,MobileDevices,IoTDevices enddevices;
+    </div>
+
+    <!-- Comment Box -->
+    <div class="comment-box">
+        <h3>Network Diagram Overview</h3>
+        <p><strong>Hetzner Server Infrastructure:</strong> Hosts various servers including Unraid, web, databases, containers, AI/ML, data science, backup, media, monitoring, and GitHub repository for source control.</p>
+        <p><strong>Data Governance:</strong> Consists of Data Catalog, Data Quality, and Data Security servers that interact with the backup server for data governance.</p>
+        <p><strong>Network Services:</strong> Includes DHCP, DNS, and VPN services that manage the network.</p>
+        <p><strong>End Devices:</strong> Comprises workstations, mobile devices, and IoT devices connected through the core network.</p>
     </div>
 </body>
 </html>

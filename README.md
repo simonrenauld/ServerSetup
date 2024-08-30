@@ -77,11 +77,22 @@ Enhanced Compute Power: Additional CPUs, RAM, and GPUs
  
 python install_dependencies.py
 01_Infrastructure_hardware\requirements.txt
-### Notes
+
+
+### Getting strated 
 
 - **Outgoing Traffic Blocked:** Ports 25 and 465 are blocked by default; you can request unblocking for a valid use case.
 - **Downloads:** Tools, packages, and OS images are available at [Hetzner Downloads](https://download.hetzner.com) (Username: hetzner, Password: download).
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com).
+
+
+
+
+
+
+
+
+
 
 ## 1. Accessing the Server
 
@@ -95,6 +106,11 @@ python install_dependencies.py
 
    ```bash
    ssh root@2a01:4f8:171:1e1c::2
+
+
+3. Partition alignments
+
+
 
 2. **Choose and Install an Operating System**
    * **List Available Boot Images:**
