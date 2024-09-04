@@ -2,6 +2,8 @@
 
 ## 1. Infrastructure Summary
 
+<iframe src="01_Infrastructure_hardware/infrastructure_diagram.html" width="100%" height="600px"></iframe>
+
 ### 1.1 Operating Systems
 - Linux (Ubuntu, CentOS, Rocky Linux)
 - Windows Server
