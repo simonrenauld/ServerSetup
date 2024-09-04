@@ -2,7 +2,7 @@
 
 ## 1. Infrastructure Summary
 
-<iframe src="01_Infrastructure_hardware/infrastructure_diagram.html" width="100%" height="600px"></iframe>
+[View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
 
 ### 1.1 Operating Systems
 - Linux (Ubuntu, CentOS, Rocky Linux)
