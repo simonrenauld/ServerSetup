@@ -76,8 +76,7 @@
 ### 2.3 Accessing the Server
 1. Open a terminal on your local machine
 2. SSH into your server:
-   ```bash
-   ssh root@2a01:4f8:171:1e1c::2
+   `ssh root@136.243.155.166
    ```
    Replace the IP address with your server's actual address
 
