@@ -76,7 +76,7 @@
 ### 2.3 Accessing the Server
 1. Open a terminal on your local machine
 2. SSH into your server:
-   `ssh root@136.243.155.166
+   ssh root@136.243.155.166
    ```
    Replace the IP address with your server's actual address
 
@@ -192,6 +192,29 @@ ps aux
    sudo ufw allow OpenSSH
    sudo ufw enable
    ```
+Create a non-root user:
+adduser admin
+usermod -aG sudo admin 
+
+2. Installing raid system
+
+Difference Between Unraid and RAID:
+Unraid: Unraid is a flexible operating system designed for NAS (Network Attached Storage) servers. It allows you to mix and match drives of different sizes and uses a parity drive for redundancy. It's designed for home users or small businesses who need a simple, flexible storage solution.
+
+RAID: RAID is a technology that uses multiple hard drives to increase redundancy and performance. There are different RAID levels (RAID 0, RAID 1, RAID 5, RAID 6, etc.), each offering a different balance of redundancy, performance, and storage capacity. RAID is often used in enterprise environments for critical data protection and high availability.
+
+https://download.hetzner.com/
+Username:	hetzner
+Password:	download
+
+https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller
+
+
+
+
+
+
+
 
 2. Configure SSH key authentication for more secure access
 
