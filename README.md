@@ -76,7 +76,7 @@
 ### 2.3 Accessing the Server
 1. Open a terminal on your local machine
 2. SSH into your server:
-   ssh root@136.243.155.166
+   à
    ```
    Replace the IP address with your server's actual address
 
@@ -209,7 +209,8 @@ Password:	download
 
 https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller
 
-
+1. Download the 3ware RAID Controller Admin Program
+First, connect to the Hetzner mirror where the 3ware RAID admin program is hosted. You can download the correct version based on your system architecture (either 32-bit or 64-bit).
 
 
 
