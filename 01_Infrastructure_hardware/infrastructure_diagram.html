@@ -28,105 +28,147 @@
 <body>
     <div class="mermaid">
         graph TD
-    Internet((Internet)) -->|WAN| Firewall[Firewall]
-    Firewall --> Router[Router]
-    Router --> Switch[Core Switch]
-    
-    subgraph "Hetzner Server Infrastructure"
-        UnraidServer[Unraid Server]:::server
-        WebServer[Web Servers<br/>Nginx, Apache]:::server
-        DatabaseServer[Databases<br/>MySQL, PostgreSQL, MongoDB]:::server
-        ContainerHost[Containers<br/>Docker, Kubernetes]:::server
-        AIServer[AI/ML Server<br/>TensorFlow, PyTorch, LLaMA]:::server
-        DataScienceServer[Data Science Server<br/>Jupyter, RStudio]:::server
-        BackupServer[Backup Server<br/>Nextcloud, Rsync]:::server
-        MediaServer[Media Server<br/>Jellyfin]:::server
-        MonitoringServer[Monitoring<br/>Prometheus, Grafana]:::server
-        GitHub[GitHub Repository<br/>Source Control]:::server
-        LoadBalancer[Load Balancer<br/>HAProxy]:::server
-        CacheServer[Cache Server<br/>Redis, Memcached]:::server
-        MessageQueue[Message Queue<br/>RabbitMQ, Kafka]:::server
+        Internet((Internet)) -->|WAN| Firewall[Firewall]
+        Firewall --> Router[Router]
+        Router --> CoreSwitch[Core Switch]
         
-        subgraph "Data Governance"
-            DataCatalog[Data Catalog<br/>Apache Atlas]:::data
-            DataQuality[Data Quality<br/>Great Expectations]:::data
-            DataSecurity[Data Security<br/>Apache Ranger]:::data
-            DataLineage[Data Lineage<br/>OpenLineage]:::data
+        subgraph "Hetzner Server Infrastructure"
+            WebServer[Web Servers<br/>Nginx, Apache]:::server
+            DatabaseServer[Databases<br/>MySQL, PostgreSQL, MongoDB]:::server
+            ContainerHost[Container Orchestration<br/>Kubernetes]:::server
+            AIServer[AI/ML Server<br/>TensorFlow, PyTorch, LLaMA]:::server
+            DataScienceServer[Data Science Server<br/>Jupyter, RStudio]:::server
+            BackupServer[Backup Server<br/>Restic, Borg]:::server
+            MediaServer[Media Server<br/>Jellyfin]:::server
+            MonitoringServer[Monitoring<br/>Prometheus, Grafana]:::server
+            GitHub[GitHub Repository<br/>Source Control]:::server
+            LoadBalancer[Load Balancer<br/>HAProxy, Nginx]:::server
+            CacheServer[Cache Server<br/>Redis, Memcached]:::server
+            MessageQueue[Message Queue<br/>RabbitMQ, Kafka]:::server
+            CertManager[Certificate Manager<br/>Let's Encrypt, Cert-Manager]:::server
             
-            DataCatalog --> DataQuality
-            DataQuality --> DataSecurity
-            DataSecurity --> DataLineage
-            DataLineage --> BackupServer
+            subgraph "Data Governance"
+                DataCatalog[Data Catalog<br/>Apache Atlas]:::data
+                DataQuality[Data Quality<br/>Great Expectations]:::data
+                DataSecurity[Data Security<br/>Apache Ranger]:::data
+                DataLineage[Data Lineage<br/>OpenLineage]:::data
+                
+                DataCatalog --> DataQuality
+                DataQuality --> DataSecurity
+                DataSecurity --> DataLineage
+                DataLineage --> BackupServer
+            end
+            
+            CoreSwitch --> WebServer
+            CoreSwitch --> DatabaseServer
+            CoreSwitch --> ContainerHost
+            CoreSwitch --> AIServer
+            CoreSwitch --> DataScienceServer
+            CoreSwitch --> BackupServer
+            CoreSwitch --> MediaServer
+            CoreSwitch --> MonitoringServer
+            CoreSwitch --> DataCatalog
+            CoreSwitch --> GitHub
+            CoreSwitch --> LoadBalancer
+            CoreSwitch --> CacheServer
+            CoreSwitch --> MessageQueue
+            CoreSwitch --> CertManager
+            GitHub --> DataScienceServer
         end
         
-        UnraidServer --> WebServer
-        UnraidServer --> DatabaseServer
-        UnraidServer --> ContainerHost
-        UnraidServer --> AIServer
-        UnraidServer --> DataScienceServer
-        UnraidServer --> BackupServer
-        UnraidServer --> MediaServer
-        UnraidServer --> MonitoringServer
-        UnraidServer --> DataCatalog
-        UnraidServer --> GitHub
-        UnraidServer --> LoadBalancer
-        UnraidServer --> CacheServer
-        UnraidServer --> MessageQueue
-        GitHub --> DataScienceServer
-    end
+        subgraph "Network Services"
+            DHCP[DHCP Server]:::network
+            DNS[DNS Server]:::network
+            VPN[VPN Server<br/>WireGuard]:::network
+            NTP[NTP Server]:::network
+            LDAP[LDAP Server]:::network
+            
+            DHCP --> DNS
+            DNS --> VPN
+            VPN --> NTP
+            NTP --> LDAP
+            LDAP --> DHCP
+        end
+        
+        subgraph "End Devices"
+            Workstations[Workstations]:::enddevices
+            MobileDevices[Mobile Devices]:::enddevices
+            IoTDevices[IoT Devices]:::enddevices
+            
+            Workstations --> MobileDevices
+            Workstations --> IoTDevices
+            MobileDevices --> IoTDevices
+        end
     
-    subgraph "Network Services"
-        DHCP[DHCP Server]:::network
-        DNS[DNS Server]:::network
-        VPN[VPN Server<br/>WireGuard]:::network
-        NTP[NTP Server]:::network
-        LDAP[LDAP Server]:::network
-        
-        DHCP --> DNS
-        DNS --> VPN
-        VPN --> NTP
-        NTP --> LDAP
-        LDAP --> DHCP
-    end
+        subgraph "Security"
+            IDS[Intrusion Detection System]:::security
+            IPS[Intrusion Prevention System]:::security
+            SIEM[Security Information and Event Management]:::security
+            WAF[Web Application Firewall]:::security
+            
+            IDS --> IPS
+            IPS --> SIEM
+            SIEM --> MonitoringServer
+            WAF --> WebServer
+        end
     
-    subgraph "End Devices"
-        Workstations[Workstations]:::enddevices
-        MobileDevices[Mobile Devices]:::enddevices
-        IoTDevices[IoT Devices]:::enddevices
-        
-        Workstations --> MobileDevices
-        Workstations --> IoTDevices
-        MobileDevices --> IoTDevices
-    end
-
-    subgraph "Security"
-        IDS[Intrusion Detection System]:::security
-        IPS[Intrusion Prevention System]:::security
-        SIEM[Security Information and Event Management]:::security
-        
-        IDS --> IPS
-        IPS --> SIEM
-        SIEM --> MonitoringServer
-    end
-
-    Switch --> UnraidServer
-    Switch --> DNS
-    Switch --> Workstations
-    Switch --> IDS
-    Workstations --> Router
-    MobileDevices --> Router
-    IoTDevices --> Router
-    VPN --> Router
-
-    classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
-    classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
-    classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
-    classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
-    classDef security fill:#ff6666,stroke:#333,stroke-width:2px;
-
-        class UnraidServer,WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity,GitHub server;
-        class DHCP,DNS,VPN network;
+        subgraph "Development Environment"
+            DevServer[Development Server]:::dev
+            TestServer[Test Server]:::dev
+            CIServer[CI/CD Server<br/>Jenkins, GitLab CI]:::dev
+            
+            DevServer --> TestServer
+            TestServer --> CIServer
+            CIServer --> ContainerHost
+        end
+    
+        subgraph "Cloud Integration"
+            CloudStorage[Cloud Storage<br/>S3, Azure Blob]:::cloud
+            CloudCompute[Cloud Compute<br/>EC2, Azure VM]:::cloud
+            
+            CloudStorage --> BackupServer
+            CloudCompute --> LoadBalancer
+        end
+    
+        CoreSwitch --> DHCP
+        CoreSwitch --> Workstations
+        CoreSwitch --> IDS
+        CoreSwitch --> DevServer
+        CoreSwitch --> CloudStorage
+        Workstations --> Router
+        MobileDevices --> Router
+        IoTDevices --> Router
+        VPN --> Router
+    
+        subgraph "Network Segmentation"
+            VLAN1[VLAN - Servers]:::vlan
+            VLAN2[VLAN - End Devices]:::vlan
+            VLAN3[VLAN - IoT]:::vlan
+            
+            CoreSwitch --> VLAN1
+            CoreSwitch --> VLAN2
+            CoreSwitch --> VLAN3
+            VLAN1 --> WebServer
+            VLAN2 --> Workstations
+            VLAN3 --> IoTDevices
+        end
+    
+        classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
+        classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
+        classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
+        classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
+        classDef security fill:#ff6666,stroke:#333,stroke-width:2px;
+        classDef dev fill:#c566ff,stroke:#333,stroke-width:2px;
+        classDef cloud fill:#66ffff,stroke:#333,stroke-width:2px;
+        classDef vlan fill:#ff66b3,stroke:#333,stroke-width:2px;
+    
+        class WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity,GitHub,LoadBalancer,CacheServer,MessageQueue,CertManager server;
+        class DHCP,DNS,VPN,NTP,LDAP network;
         class Workstations,MobileDevices,IoTDevices enddevices;
+        class IDS,IPS,SIEM,WAF security;
+        class DevServer,TestServer,CIServer dev;
+        class CloudStorage,CloudCompute cloud;
+        class VLAN1,VLAN2,VLAN3 vlan;
     </div>
 
     <!-- Comment Box -->
