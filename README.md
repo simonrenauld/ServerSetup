@@ -74,6 +74,11 @@
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
 
 ### 2.3 Accessing the Server
+
+Proxmox 
+
+
+
 1. Open a terminal on your local machine
 2. SSH into your server:
    ssh root@136.243.155.166
