@@ -99,7 +99,7 @@
    ```bash
    sudo nano /etc/ssh/sshd_config
    ```
-   Add or modify these lines:
+   Add or modify these lines:  
    ```
    PermitRootLogin yes
    PasswordAuthentication yes
@@ -209,8 +209,7 @@ Password:	download
 
 https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller
 
-1. Download the 3ware RAID Controller Admin Program
-First, connect to the Hetzner mirror where the 3ware RAID admin program is hosted. You can download the correct version based on your system architecture (either 32-bit or 64-bit).
+1. https://docs.hetzner.com/robot/dedicated-server/raid/linux-software-raid
 
 
 
