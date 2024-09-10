@@ -82,6 +82,7 @@ Proxmox
 1. Open a terminal on your local machine
 2. SSH into your server:
    ssh root@136.243.155.166
+   ssh simonadmin@136.243.155.166
    ```
    Replace the IP address with your server's actual address
 
@@ -95,6 +96,7 @@ Proxmox
    ```
 
 2. Add your public key:
+
    ```bash
    echo "your-public-key" | sudo tee -a /root/.ssh/authorized_keys
    sudo chmod 600 /root/.ssh/authorized_keys
