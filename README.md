@@ -6,8 +6,17 @@
 
 ### 1.1 Operating Systems
 
-- Linux (Ubuntu, CentOS, Rocky Linux)
-- Windows Server
+-Linux: Highly customizable and versatile, suitable for a wide range of applications and hardware.
+-Windows Server: Offers a familiar interface and strong integration with Microsoft products, making it a popular choice for businesses.
+-macOS: Apple's proprietary operating system for its computers, known for its user-friendly interface and integration with Apple devices.
+-Android: A mobile operating system based on Linux, used by most smartphones and tablets.
+-iOS: Apple's mobile operating system, used by iPhones and iPads.
+Chrome OS: A lightweight operating system developed by Google, primarily designed for web-based applications.
+-FreeBSD: A Unix-like operating system known for its stability and performance.
+-OpenBSD: A BSD-based operating system with a strong focus on security.
+-Solaris: A proprietary operating system developed by Oracle, primarily used for servers and high-performance computing.
+-AIX: A proprietary operating system developed by IBM for its Power Systems hardware.
+-HP-UX: A proprietary operating system developed by HP for its Itanium-based servers.
 
 ## 1.2. Virtualization Platform
 
