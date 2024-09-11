@@ -5,29 +5,35 @@
 [View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
 
 ### 1.1 Operating Systems
+
 - Linux (Ubuntu, CentOS, Rocky Linux)
 - Windows Server
 
 ### 1.2 Software and Services
+
 - Web Servers: Nginx, Apache
 - Databases: MySQL, PostgreSQL, MongoDB
 - Containers: Docker, Kubernetes
 
 ### 1.3 Data Science and Engineering Tools
+
 - Data Science: Jupyter Notebook, RStudio, Anaconda
 - Data Engineering: Apache Hadoop, Apache Spark, Kafka
 
 ### 1.4 AI/ML Frameworks
+
 - TensorFlow, PyTorch, Hugging Face (LLaMA)
 - Continuous Learning Pipeline
 - Document Generation: Automated proposal and roadmap creation tools
 
 ### 1.5 Monitoring and Management Tools
+
 - Monitoring: Prometheus, Grafana, Zabbix
 - Configuration Management: Ansible, Terraform
 - Backup: Rsync, Bacula, Veeam
 
 ### 1.6 Data Governance
+
 - Data Governance Framework
 - Data Cataloging: Apache Atlas, Collibra
 - Data Quality Management: Talend, Informatica, Great Expectations
@@ -38,16 +44,19 @@
 - Monitoring and Reporting: Grafana, Tableau
 
 ### 1.7 Media Server
+
 - Jellyfin: For storing and streaming movies
 - FFmpeg, HandBrake (optional)
 - Wi-Fi configuration for projector connectivity
 
 ### 1.8 Backup System for Phone Photos and Videos
+
 - Nextcloud: For file storage and syncing from mobile devices
 - ZFS/Btrfs: For storage management
 - NAS (optional): For additional storage capacity
 
 ### 1.9 AI-Powered Messaging and Calendar Management
+
 - LLaMA AI Model: For natural language processing
 - Custom Chatbot: Integrated with the LLaMA model
 - Google Calendar API/Nextcloud Calendar: For calendar management
@@ -55,6 +64,7 @@
 - GPU (optional): For AI processing acceleration
 
 ### 1.10 AI for Business and Technical Management
+
 - Data Lakes and Warehousing: For storing and analyzing client data
 - Document Generation: Automated proposals and roadmaps
 - CRM Integration: Track client interactions and projects
@@ -65,10 +75,12 @@
 ## 2. Server Setup
 
 ### 2.1 Why Create Server from Rescue
+
 - Cost-effective and flexible
 - Activated, currently booted in the Rescue System
 
 ### 2.2 Getting Started
+
 - **Outgoing Traffic:** Ports 25 and 465 are blocked by default; unblocking available upon request
 - **Downloads:** Tools, packages, and OS images available at [Hetzner Downloads](https://download.hetzner.com)
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
@@ -89,6 +101,7 @@ Proxmox
 3. Accept the server's fingerprint when prompted
 
 ### 2.4 Initial Server Configuration
+
 1. Create SSH directory and set permissions:
    ```bash
    sudo mkdir -p /root/.ssh
@@ -124,6 +137,7 @@ Proxmox
    ```
 
 ### 2.5 Server Information
+
 Check server configurations:
 ```bash
 # Operating System and Kernel Version
@@ -153,6 +167,7 @@ ps aux
 ```
 
 ### 2.6 SSH Host Keys
+
 1. Backup existing host keys:
    ```bash
    sudo mkdir -p /etc/ssh/backup
@@ -174,11 +189,13 @@ ps aux
 ## 3. Operating System Installation
 
 ### 3.1 Choose and Install an Operating System
+
 1. List available boot images in the `bootimages/` directory
 2. Select an OS from the Hetzner mirror
 3. Install the OS using the rescue system or direct installation method
 
 ### 3.2 Post-Installation Configuration
+
 1. Update and upgrade the system:
    ```bash
    # For Debian/Ubuntu
@@ -194,6 +211,7 @@ ps aux
    ```
 
 ### 3.3 Security Setup
+
 1. Set up a firewall (e.g., ufw for Ubuntu/Debian):
    ```bash
    sudo ufw allow OpenSSH
@@ -226,7 +244,9 @@ https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller
 2. Configure SSH key authentication for more secure access
 
 ### 3.4 Additional Software Installation
+
 Install necessary software based on your use case (e.g., web server, database)
 
 ## 4. Documentation and Logging
+
 Set up logging to monitor system performance and issues
