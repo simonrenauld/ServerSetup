@@ -56,15 +56,15 @@
 
 ### 1.7 Media Server
 
-- Jellyfin: For storing and streaming movies
-- FFmpeg, HandBrake (optional)
+- Jellyfin: A great choice for a personal media server. It's open-source, supports various formats, and offers a user-friendly interface
+- FFmpeg, HandBrake: These tools can be used to transcode media files to compatible formats for streaming. While optional, they can be helpful for ensuring smooth playback on different devices.
 - Wi-Fi configuration for projector connectivity
 
 ### 1.8 Backup System for Phone Photos and Videos
 
-- Nextcloud: For file storage and syncing from mobile devices
-- ZFS/Btrfs: For storage management
-- NAS (optional): For additional storage capacity
+- Nextcloud: A versatile solution for both file storage and syncing. It's easy to set up and offers a mobile app for convenient backups.
+- ZFS/Btrfs: These are powerful file systems known for their reliability and features like snapshotting and data integrity. They're excellent choices for long-term storage.
+- NAS: A Network Attached Storage device can provide additional storage capacity and can be integrated with Nextcloud for increased redundancy.
 
 ### 1.9 AI-Powered Messaging and Calendar Management
 
