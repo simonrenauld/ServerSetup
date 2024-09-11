@@ -9,7 +9,18 @@
 - Linux (Ubuntu, CentOS, Rocky Linux)
 - Windows Server
 
-### 1.2 Software and Services
+## 1.2. Virtualization Platform
+
+#### Proxmox VE is a free, open-source virtualization platform for Linux. It uses KVM, a powerful hypervisor, and offers a web-based management interface. You can create VMs and containers, manage storage, and ensure high availability.
+
+- KVM-based virtualization: Leveraging the efficient and high-performance KVM hypervisor, Proxmox VE allows you to create and run virtual machines (VMs) directly on your physical hardware.
+- Web-based management: The user-friendly web interface provides a centralized dashboard for managing all your virtualized environments, including VMs, containers, and storage.
+- Container support: In addition to VMs, Proxmox VE supports LXC (Linux Containers) for running lightweight, isolated applications within a single operating system kernel.
+- Storage management: The platform offers tools for managing various storage types, including local disks, iSCSI, NFS, and Ceph, ensuring efficient data storage and retrieval.
+- High availability: Proxmox VE includes features like clustering and HA (High Availability) to ensure continuous operation and minimize downtime.
+- API integration: The platform provides a RESTful API, allowing for automation and integration with other systems.
+
+#### 1.2.1 Software and Services
 
 - Web Servers: Nginx, Apache
 - Databases: MySQL, PostgreSQL, MongoDB
