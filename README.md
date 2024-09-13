@@ -18,6 +18,7 @@ Chrome OS: A lightweight operating system developed by Google, primarily designe
 - AIX: A proprietary operating system developed by IBM for its Power Systems hardware.
 - HP-UX: A proprietary operating system developed by HP for its Itanium-based servers.
 
+<<<<<<< HEAD
 ## 1.2. Virtualization Platform
 
 #### Proxmox VE is a free, open-source virtualization platform for Linux. It uses KVM, a powerful hypervisor, and offers a web-based management interface. You can create VMs and containers, manage storage, and ensure high availability.
@@ -30,6 +31,55 @@ Chrome OS: A lightweight operating system developed by Google, primarily designe
 - API integration: The platform provides a RESTful API, allowing for automation and integration with other systems.
 
 #### 1.2.1 Software and Services
+=======
+### Virtual Machines
+
+The choice of virtualization technology depends on your specific needs and environment. Here are some considerations for each option:
+
+Proxmox VE:
+
+Pros:
+Open-source and free.
+Supports both KVM and LXC containers.
+Web-based management interface.
+Good for enterprise environments.
+Cons:
+Requires a dedicated server.
+Might be overkill for small-scale or personal projects.
+VirtualBox:
+
+Pros:
+Free and open-source.
+Easy to set up and use.
+Good for desktop virtualization.
+Cons:
+Not as performant as bare-metal hypervisors.
+Limited scalability for enterprise use.
+VMware ESXi:
+
+Pros:
+High performance and reliability.
+Widely used in enterprise environments.
+Extensive support and documentation.
+Cons:
+Requires a license for advanced features.
+Can be complex to set up and manage.
+KVM (Kernel-based Virtual Machine):
+
+Pros:
+Integrated into the Linux kernel.
+High performance and scalability.
+Suitable for both personal and enterprise use.
+Cons:
+Requires more manual setup and management.
+No native GUI management interface (though tools like Virt-Manager can be used).
+Recommendations:
+For Personal Use or Small Projects: VirtualBox is a good choice due to its ease of use and setup.
+For Enterprise or Large-Scale Deployments: Proxmox VE or VMware ESXi are better suited due to their advanced features and scalability.
+For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performance but requires more hands-on management.
+
+### 1.2 Software and Services
+>>>>>>> 33d1083 (server)
 
 - Web Servers: Nginx, Apache
 - Databases: MySQL, PostgreSQL, MongoDB
@@ -107,16 +157,17 @@ Chrome OS: A lightweight operating system developed by Google, primarily designe
 
 ### 2.3 Accessing the Server
 
-Proxmox 
 
 
 1. Open a terminal on your local machine
 2. SSH into your server:
+
    ```
    ssh root@136.243.155.166
    ssh simonadmin@136.243.155.166
 
    ```
+
    Replace the IP address with your server's actual address
 
 3. Accept the server's fingerprint when prompted
@@ -124,6 +175,7 @@ Proxmox
 ### 2.4 Initial Server Configuration
 
 1. Create SSH directory and set permissions:
+
    ```bash
    sudo mkdir -p /root/.ssh
    sudo chmod 700 /root/.ssh
@@ -137,10 +189,13 @@ Proxmox
    ```
 
 3. Configure SSH:
+
    ```bash
    sudo nano /etc/ssh/sshd_config
    ```
+
    Add or modify these lines:  
+
    ```
    PermitRootLogin yes
    PasswordAuthentication yes
@@ -148,11 +203,13 @@ Proxmox
    ```
 
 4. Set root password:
+
    ```bash
    sudo passwd root
    ```
 
 5. Restart SSH service:
+
    ```bash
    sudo systemctl restart sshd
    ```
@@ -160,6 +217,7 @@ Proxmox
 ### 2.5 Server Information
 
 Check server configurations:
+
 ```bash
 # Operating System and Kernel Version
 uname -a
@@ -187,15 +245,18 @@ netstat -tuln
 ps aux
 ```
 
+
 ### 2.6 SSH Host Keys
 
 1. Backup existing host keys:
+
    ```bash
    sudo mkdir -p /etc/ssh/backup
    sudo cp /etc/ssh/ssh_host_* /etc/ssh/backup/
    ```
 
 2. Generate new host keys:
+
    ```bash
    sudo ssh-keygen -t rsa -b 3072 -f /etc/ssh/ssh_host_rsa_key -N ""
    sudo ssh-keygen -t ecdsa -b 256 -f /etc/ssh/ssh_host_ecdsa_key -N ""
@@ -203,6 +264,7 @@ ps aux
    ```
 
 3. If you receive a host key change warning, remove the old key:
+
    ```bash
    ssh-keygen -f "/home/user/.ssh/known_hosts" -R "server_ip"
    ```
@@ -218,6 +280,7 @@ ps aux
 ### 3.2 Post-Installation Configuration
 
 1. Update and upgrade the system:
+
    ```bash
    # For Debian/Ubuntu
    sudo apt update && sudo apt upgrade -y
@@ -227,6 +290,7 @@ ps aux
    ```
 
 2. Install essential packages:
+
    ```bash
    sudo apt install htop curl vim
    ```
@@ -234,13 +298,34 @@ ps aux
 ### 3.3 Security Setup
 
 1. Set up a firewall (e.g., ufw for Ubuntu/Debian):
+
    ```bash
    sudo ufw allow OpenSSH
    sudo ufw enable
    ```
+
 Create a non-root user:
 adduser admin
-usermod -aG sudo admin 
+usermod -aG sudo admin
+
+
+Installing Promox VE 
+
+- Get in rescue mode and download promox
+wget -4 -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_8.2-2.iso
+
+check the integrity of the file: 
+sha256sum pve.iso
+
+
+Create a bootable USB drive. Since you're in rescue mode, we'll write the ISO directly to one of your disks. Be very careful with this step to avoid data loss. Let's use nvme1n1 for this example:
+
+dd if=pve.iso of=/dev/nvme1n1 bs=1M status=progress
+This command will overwrite the entire disk, so make sure you're using the correct device.
+
+
+
+
 
 2. Installing raid system
 
@@ -249,18 +334,13 @@ Unraid: Unraid is a flexible operating system designed for NAS (Network Attached
 
 RAID: RAID is a technology that uses multiple hard drives to increase redundancy and performance. There are different RAID levels (RAID 0, RAID 1, RAID 5, RAID 6, etc.), each offering a different balance of redundancy, performance, and storage capacity. RAID is often used in enterprise environments for critical data protection and high availability.
 
-https://download.hetzner.com/
-Username:	hetzner
-Password:	download
+<https://download.hetzner.com/>
+Username: hetzner
+Password: download
 
-https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller
+<https://docs.hetzner.com/robot/dedicated-server/raid/3ware-raid-controller>
 
-1. https://docs.hetzner.com/robot/dedicated-server/raid/linux-software-raid
-
-
-
-
-
+1. <https://docs.hetzner.com/robot/dedicated-server/raid/linux-software-raid>
 
 2. Configure SSH key authentication for more secure access
 
@@ -271,3 +351,9 @@ Install necessary software based on your use case (e.g., web server, database)
 ## 4. Documentation and Logging
 
 Set up logging to monitor system performance and issues
+
+
+
+### Installing Tiger VNC
+
+https://community.hetzner.com/tutorials/install-tigervnc
