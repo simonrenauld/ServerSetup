@@ -310,8 +310,7 @@ root@Proxmox-VE ~ #
 https://136.243.155.166:8006/
 
 
-
-
+![proxmox firewall](<proxmox firewall.jpg>)
 
 
 
