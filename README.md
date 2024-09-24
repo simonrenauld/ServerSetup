@@ -160,7 +160,7 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 
 
 ### Go in rescue mode 
-
+https://www.youtube.com/watch?v=VZTfNXFC01Y&list=TLPQMjQwOTIwMjTMoPKO2xho_w&index=5
 
 simonadmin@simon:~$ ssh root@136.243.155.166
 ssh: connect to host 136.243.155.166 port 22: Connection refused
@@ -248,6 +248,84 @@ Network data:
 root@rescue ~ #
 
 
+Systems on them will not be added to the GRUB boot configuration.
+Check GRUB_DISABLE_OS_PROBER documentation entry.
+done
+
+----- Done installing Proxmox VE -----
+
+
+                  INSTALLATION COMPLETE
+   You can now reboot and log in to your new system with the
+ same credentials that you used to log into the rescue system.
+
+root@rescue ~ # reboot
+root@rescue ~ # Connection to 136.243.155.166 closed by remote host.
+Connection to 136.243.155.166 closed.
+simonadmin@simon:~$ ssh root@136.243.155.166
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:jzB5f43SAsbQLnhbyuYpYU6xJ+tDACR7YfC6bHTjAvA.
+Please contact your system administrator.
+Add correct host key in /home/simonadmin/.ssh/known_hosts to get rid of this message.
+Offending RSA key in /home/simonadmin/.ssh/known_hosts:3
+  remove with:
+  ssh-keygen -f "/home/simonadmin/.ssh/known_hosts" -R "136.243.155.166"
+Host key for 136.243.155.166 has changed and you have requested strict checking.
+Host key verification failed.
+simonadmin@simon:~$ ssh-keygen -f "/home/simonadmin/.ssh/known_hosts" -R "136.243.155.166"
+# Host 136.243.155.166 found: line 1
+# Host 136.243.155.166 found: line 2
+# Host 136.243.155.166 found: line 3
+/home/simonadmin/.ssh/known_hosts updated.
+Original contents retained as /home/simonadmin/.ssh/known_hosts.old
+simonadmin@simon:~$ ssh root@136.243.155.166
+The authenticity of host '136.243.155.166 (136.243.155.166)' can't be established.
+ED25519 key fingerprint is SHA256:jzB5f43SAsbQLnhbyuYpYU6xJ+tDACR7YfC6bHTjAvA.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '136.243.155.166' (ED25519) to the list of known hosts.
+Linux Proxmox-VE 5.15.158-2-pve #1 SMP PVE 5.15.158-2 (2024-07-26T13:11Z) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+root@Proxmox-VE ~ # passwd
+New password:
+Retype new password:
+passwd: password updated successfully
+root@Proxmox-VE ~ #
+
+
+## LOGIN Web interface
+
+https://136.243.155.166:8006/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -268,7 +346,7 @@ root@rescue ~ #
    
    ssh simonadmin@136.243.155.166
    ssh -X root@136.243.155.166
- 
+   ssh root@136.243.155.166
 
 136.243.155.166:5901
 
