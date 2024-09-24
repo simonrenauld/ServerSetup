@@ -3,181 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Network Diagram</title>
-    <!-- Include Mermaid.js library -->
+    <title>Improved Network Diagram</title>
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true });
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default',
+            flowchart: {
+                useMaxWidth: false,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
     </script>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
+            background-color: #f0f0f0;
         }
-        .comment-box {
-            margin-top: 30px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-        }
-        .comment-box h3 {
-            margin-top: 0;
+        .mermaid {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
     <div class="mermaid">
+        %%{init: {'theme': 'default', 'themeVariables': { 'fontSize': '16px' }}}%%
         graph TD
-        Internet((Internet)) -->|WAN| Firewall[Firewall]
+        Internet((Internet)):::internet -->|WAN| Firewall[Firewall]
         Firewall --> Router[Router]
         Router --> CoreSwitch[Core Switch]
         
         subgraph "Hetzner Server Infrastructure"
+            direction TB
             WebServer[Web Servers<br/>Nginx, Apache]:::server
-            DatabaseServer[Databases<br/>MySQL, PostgreSQL, MongoDB]:::server
+            DatabaseServer[Databases<br/>MySQL, PostgreSQL]:::server
             ContainerHost[Container Orchestration<br/>Kubernetes]:::server
-            AIServer[AI/ML Server<br/>TensorFlow, PyTorch, LLaMA]:::server
+            AIServer[AI/ML Server<br/>TensorFlow, PyTorch]:::server
             DataScienceServer[Data Science Server<br/>Jupyter, RStudio]:::server
             BackupServer[Backup Server<br/>Restic, Borg]:::server
-            MediaServer[Media Server<br/>Jellyfin]:::server
             MonitoringServer[Monitoring<br/>Prometheus, Grafana]:::server
-            GitHub[GitHub Repository<br/>Source Control]:::server
+            GitHub[GitHub Repository]:::server
             LoadBalancer[Load Balancer<br/>HAProxy, Nginx]:::server
-            CacheServer[Cache Server<br/>Redis, Memcached]:::server
-            MessageQueue[Message Queue<br/>RabbitMQ, Kafka]:::server
-            CertManager[Certificate Manager<br/>Let's Encrypt, Cert-Manager]:::server
             
-            subgraph "Data Governance"
-                DataCatalog[Data Catalog<br/>Apache Atlas]:::data
-                DataQuality[Data Quality<br/>Great Expectations]:::data
-                DataSecurity[Data Security<br/>Apache Ranger]:::data
-                DataLineage[Data Lineage<br/>OpenLineage]:::data
-                
-                DataCatalog --> DataQuality
-                DataQuality --> DataSecurity
-                DataSecurity --> DataLineage
-                DataLineage --> BackupServer
-            end
-            
-            CoreSwitch --> WebServer
-            CoreSwitch --> DatabaseServer
-            CoreSwitch --> ContainerHost
-            CoreSwitch --> AIServer
-            CoreSwitch --> DataScienceServer
-            CoreSwitch --> BackupServer
-            CoreSwitch --> MediaServer
-            CoreSwitch --> MonitoringServer
-            CoreSwitch --> DataCatalog
-            CoreSwitch --> GitHub
-            CoreSwitch --> LoadBalancer
-            CoreSwitch --> CacheServer
-            CoreSwitch --> MessageQueue
-            CoreSwitch --> CertManager
-            GitHub --> DataScienceServer
+            CoreSwitch --> WebServer & DatabaseServer & ContainerHost & AIServer & DataScienceServer & BackupServer & MonitoringServer & GitHub & LoadBalancer
         end
         
         subgraph "Network Services"
+            direction LR
             DHCP[DHCP Server]:::network
             DNS[DNS Server]:::network
             VPN[VPN Server<br/>WireGuard]:::network
-            NTP[NTP Server]:::network
-            LDAP[LDAP Server]:::network
             
-            DHCP --> DNS
-            DNS --> VPN
-            VPN --> NTP
-            NTP --> LDAP
-            LDAP --> DHCP
+            DHCP --- DNS --- VPN
         end
         
         subgraph "End Devices"
+            direction TB
             Workstations[Workstations]:::enddevices
             MobileDevices[Mobile Devices]:::enddevices
             IoTDevices[IoT Devices]:::enddevices
-            
-            Workstations --> MobileDevices
-            Workstations --> IoTDevices
-            MobileDevices --> IoTDevices
         end
     
         subgraph "Security"
-            IDS[Intrusion Detection System]:::security
-            IPS[Intrusion Prevention System]:::security
-            SIEM[Security Information and Event Management]:::security
-            WAF[Web Application Firewall]:::security
+            direction TB
+            IDS[Intrusion Detection]:::security
+            IPS[Intrusion Prevention]:::security
+            SIEM[Security Info & Event Mgmt]:::security
             
-            IDS --> IPS
-            IPS --> SIEM
-            SIEM --> MonitoringServer
-            WAF --> WebServer
-        end
-    
-        subgraph "Development Environment"
-            DevServer[Development Server]:::dev
-            TestServer[Test Server]:::dev
-            CIServer[CI/CD Server<br/>Jenkins, GitLab CI]:::dev
-            
-            DevServer --> TestServer
-            TestServer --> CIServer
-            CIServer --> ContainerHost
-        end
-    
-        subgraph "Cloud Integration"
-            CloudStorage[Cloud Storage<br/>S3, Azure Blob]:::cloud
-            CloudCompute[Cloud Compute<br/>EC2, Azure VM]:::cloud
-            
-            CloudStorage --> BackupServer
-            CloudCompute --> LoadBalancer
+            IDS --> IPS --> SIEM
         end
     
         CoreSwitch --> DHCP
         CoreSwitch --> Workstations
         CoreSwitch --> IDS
-        CoreSwitch --> DevServer
-        CoreSwitch --> CloudStorage
-        Workstations --> Router
-        MobileDevices --> Router
-        IoTDevices --> Router
+        Workstations & MobileDevices & IoTDevices --> Router
         VPN --> Router
-    
-        subgraph "Network Segmentation"
-            VLAN1[VLAN - Servers]:::vlan
-            VLAN2[VLAN - End Devices]:::vlan
-            VLAN3[VLAN - IoT]:::vlan
-            
-            CoreSwitch --> VLAN1
-            CoreSwitch --> VLAN2
-            CoreSwitch --> VLAN3
-            VLAN1 --> WebServer
-            VLAN2 --> Workstations
-            VLAN3 --> IoTDevices
-        end
     
         classDef server fill:#ffe066,stroke:#333,stroke-width:2px;
         classDef network fill:#66b3ff,stroke:#333,stroke-width:2px;
-        classDef data fill:#99cc99,stroke:#333,stroke-width:2px;
         classDef enddevices fill:#ff9966,stroke:#333,stroke-width:2px;
         classDef security fill:#ff6666,stroke:#333,stroke-width:2px;
-        classDef dev fill:#c566ff,stroke:#333,stroke-width:2px;
-        classDef cloud fill:#66ffff,stroke:#333,stroke-width:2px;
-        classDef vlan fill:#ff66b3,stroke:#333,stroke-width:2px;
+        classDef internet fill:#85C1E9,stroke:#333,stroke-width:4px;
     
-        class WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MediaServer,MonitoringServer,DataCatalog,DataQuality,DataSecurity,GitHub,LoadBalancer,CacheServer,MessageQueue,CertManager server;
-        class DHCP,DNS,VPN,NTP,LDAP network;
+        class WebServer,DatabaseServer,ContainerHost,AIServer,DataScienceServer,BackupServer,MonitoringServer,GitHub,LoadBalancer server;
+        class DHCP,DNS,VPN network;
         class Workstations,MobileDevices,IoTDevices enddevices;
-        class IDS,IPS,SIEM,WAF security;
-        class DevServer,TestServer,CIServer dev;
-        class CloudStorage,CloudCompute cloud;
-        class VLAN1,VLAN2,VLAN3 vlan;
+        class IDS,IPS,SIEM security;
+        class Internet internet;
     </div>
-
-    <!-- Comment Box -->
-    <div class="comment-box">
-        <h3>Network Diagram Overview</h3>
-        <p><strong>Hetzner Server Infrastructure:</strong> Hosts various servers including Unraid, web, databases, containers, AI/ML, data science, backup, media, monitoring, and GitHub repository for source control.</p>
-        <p><strong>Data Governance:</strong> Consists of Data Catalog, Data Quality, and Data Security servers that interact with the backup server for data governance.</p>
-        <p><strong>Network Services:</strong> Includes DHCP, DNS, and VPN services that manage the network.</p>
-        <p><strong>End Devices:</strong> Comprises workstations, mobile devices, and IoT devices connected through the core network.</p>
-    </div>
-</html>
+</body>
 </html>

@@ -155,6 +155,108 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 - **Downloads:** Tools, packages, and OS images available at [Hetzner Downloads](https://download.hetzner.com)
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
 
+
+
+
+
+### Go in rescue mode 
+
+
+simonadmin@simon:~$ ssh root@136.243.155.166
+ssh: connect to host 136.243.155.166 port 22: Connection refused
+simonadmin@simon:~$ ping 136.243.155.166
+PING 136.243.155.166 (136.243.155.166) 56(84) bytes of data.
+64 bytes from 136.243.155.166: icmp_seq=1 ttl=44 time=243 ms
+64 bytes from 136.243.155.166: icmp_seq=2 ttl=44 time=243 ms
+64 bytes from 136.243.155.166: icmp_seq=3 ttl=44 time=242 ms
+64 bytes from 136.243.155.166: icmp_seq=4 ttl=44 time=245 ms
+64 bytes from 136.243.155.166: icmp_seq=5 ttl=44 time=243 ms
+64 bytes from 136.243.155.166: icmp_seq=6 ttl=44 time=243 ms
+64 bytes from 136.243.155.166: icmp_seq=7 ttl=44 time=243 ms
+64 bytes from 136.243.155.166: icmp_seq=8 ttl=44 time=242 ms
+^C
+--- 136.243.155.166 ping statistics ---
+8 packets transmitted, 8 received, 0% packet loss, time 7010ms
+rtt min/avg/max/mdev = 241.808/242.905/244.880/0.847 ms
+simonadmin@simon:~$ ssh root@136.243.155.166
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:Z1GJ8AoUaDb/IeY4k/3XFretkKZYxA7/nNUCRgUSgSE.
+Please contact your system administrator.
+Add correct host key in /home/simonadmin/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/simonadmin/.ssh/known_hosts:3
+  remove with:
+  ssh-keygen -f "/home/simonadmin/.ssh/known_hosts" -R "136.243.155.166"
+Host key for 136.243.155.166 has changed and you have requested strict checking.
+Host key verification failed.
+simonadmin@simon:~$ ssh-keygen -f "/home/simonadmin/.ssh/known_hosts" -R "136.243.155.166"
+# Host 136.243.155.166 found: line 1
+# Host 136.243.155.166 found: line 2
+# Host 136.243.155.166 found: line 3
+/home/simonadmin/.ssh/known_hosts updated.
+Original contents retained as /home/simonadmin/.ssh/known_hosts.old
+simonadmin@simon:~$ ssh root@136.243.155.166
+The authenticity of host '136.243.155.166 (136.243.155.166)' can't be established.
+ED25519 key fingerprint is SHA256:Z1GJ8AoUaDb/IeY4k/3XFretkKZYxA7/nNUCRgUSgSE.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added '136.243.155.166' (ED25519) to the list of known hosts.
+root@136.243.155.166's password:
+Linux rescue 6.10.7 #1 SMP Mon Sep  2 04:43:50 UTC 2024 x86_64
+
+-------------------------------------------------------------------------------------------------------------------------
+
+  Welcome to the Hetzner Rescue System.
+
+  This Rescue System is based on Debian GNU/Linux 12 (bookworm) with a custom kernel.
+  You can install software like you would in a normal system.
+
+  To install a new operating system from one of our prebuilt images, run 'installimage' and follow the instructions.
+
+  Important note: Any data that was not written to the disks will be lost during a reboot.
+
+  For additional information, check the following resources:
+    Rescue System:           https://docs.hetzner.com/robot/dedicated-server/troubleshooting/hetzner-rescue-system
+    Installimage:            https://docs.hetzner.com/robot/dedicated-server/operating-systems/installimage
+    Install custom software: https://docs.hetzner.com/robot/dedicated-server/operating-systems/installing-custom-images
+    other articles:          https://docs.hetzner.com/robot
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Rescue System (via Legacy/CSM) up since 2024-09-23 14:54 +02:00
+
+Hardware data:
+
+   CPU1: Intel(R) Core(TM) i7-6700 CPU @ 3.40GHz (Cores 8)
+   Memory:  64099 MB
+   Disk /dev/nvme0n1: 512 GB (=> 476 GiB) doesn't contain a valid partition table
+   Disk /dev/nvme1n1: 512 GB (=> 476 GiB)
+   Total capacity 953 GiB with 2 Disks
+
+Network data:
+   eth0  LINK: yes
+         MAC:  90:1b:0e:8b:c6:89
+         IP:   136.243.155.166
+         IPv6: 2a01:4f8:171:1e1c::2/64
+         Intel(R) PRO/1000 Network Driver
+
+root@rescue ~ #
+
+
+
+
+
+
+
+
+
+
+
 ### 2.3 Accessing the Server
 
 
@@ -163,9 +265,14 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 2. SSH into your server:
 
    ```
-   ssh root@136.243.155.166
+   
    ssh simonadmin@136.243.155.166
+   ssh -X root@136.243.155.166
+ 
 
+136.243.155.166:5901
+
+nano ~/.ssh/config
    ```
 
    Replace the IP address with your server's actual address
@@ -187,6 +294,15 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
    echo "your-public-key" | sudo tee -a /root/.ssh/authorized_keys
    sudo chmod 600 /root/.ssh/authorized_keys
    ```
+
+
+
+Enabling the OpenSSH Client (SSH) on Windows
+
+https://www.hawaii.edu/askus/1874
+
+
+
 
 3. Configure SSH:
 
@@ -356,4 +472,15 @@ Set up logging to monitor system performance and issues
 
 ### Installing Tiger VNC
 
+
+PS C:\WINDOWS\system32> ssh -v -L 5901:localhost:5901 simonadmin@136.243.155.166
+
+
+
+OpenSSH_for_Windows_8.6p1, LibreSSL 3.4.3
+debug1: Reading configuration data C:\\Users\\renau/.ssh/config
+debug1: C:\\Users\\renau/.ssh/config line 1: Applying options for *
+debug1: Authenticator provider $SSH_SK_PROVIDER did not resolve; disabling
+debug1: Connecting to 136.243.155.166 [136.243.155.166] port 22.
+debug1: Connection established.
 https://community.hetzner.com/tutorials/install-tigervnc
