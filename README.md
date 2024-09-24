@@ -441,6 +441,9 @@ ps aux
 
 ### 2.6 SSH Host Keys
 
+
+https://community.hetzner.com/tutorials/howto-ssh-key
+
 1. Backup existing host keys:
 
    ```bash
@@ -509,7 +512,7 @@ wget -4 -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_8.2-2.iso
 
 check the integrity of the file: 
 sha256sum pve.iso
-
+ssh
 
 Create a bootable USB drive. Since you're in rescue mode, we'll write the ISO directly to one of your disks. Be very careful with this step to avoid data loss. Let's use nvme1n1 for this example:
 
