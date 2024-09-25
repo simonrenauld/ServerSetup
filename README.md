@@ -155,7 +155,58 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 - **Downloads:** Tools, packages, and OS images available at [Hetzner Downloads](https://download.hetzner.com)
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
 
+### SSH isuees 
+Certainly. I'll guide you through a series of command-line steps to verify and troubleshoot your SSH connection issues. Run these commands on the server you're trying to connect to (136.243.155.166). You'll need root access or the ability to use sudo.
 
+Check SSH service status:
+Copysudo systemctl status sshd
+
+Verify SSH server is listening on port 22:
+Copysudo ss -tuln | grep :22
+
+Check SSH configuration file for errors:
+Copysudo sshd -T
+
+Increase SSH daemon logging:
+Copysudo sed -i 's/#LogLevel INFO/LogLevel DEBUG3/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+
+Check authorized keys file for root:
+Copyls -la /root/.ssh/authorized_keys
+cat /root/.ssh/authorized_keys
+
+Verify permissions on SSH directories and files:
+Copyls -la /root/.ssh
+sudo chmod 700 /root/.ssh
+sudo chmod 600 /root/.ssh/authorized_keys
+
+Check SSH logs for error messages:
+Copysudo tail -f /var/log/auth.log
+(On some systems, it might be /var/log/secure)
+Check for any IP blocking rules:
+Copysudo iptables -L
+
+Verify PAM configuration:
+Copycat /etc/pam.d/sshd
+
+Check for SELinux interference (if applicable):
+Copygetenforce
+If it returns "Enforcing", try:
+Copysudo setenforce 0
+Then try connecting again. If it works, SELinux might be the issue.
+Test SSH connection locally:
+Copyssh -vv root@localhost
+
+
+After running these commands, try to connect again from your client machine:
+Copyssh -vvv root@136.243.155.166
+Watch the server's auth log while attempting to connect:
+Copysudo tail -f /var/log/auth.log
+These steps should help identify where the issue lies. After troubleshooting, remember to revert any temporary changes:
+Copysudo sed -i 's/LogLevel DEBUG3/#LogLevel INFO/' /etc/ssh/sshd_config
+sudo systemctl restart sshd
+If SELinux was disabled, re-enable it:
+Copysudo setenforce 1
 
 
 
@@ -164,7 +215,7 @@ https://www.youtube.com/watch?v=VZTfNXFC01Y&list=TLPQMjQwOTIwMjTMoPKO2xho_w&inde
 
 simonadmin@simon:~$ ssh root@136.243.155.166
 ssh: connect to host 136.243.155.166 port 22: Connection refused
-simonadmin@simon:~$ ping 136.243.155.166
+simonadmin@simon:s
 PING 136.243.155.166 (136.243.155.166) 56(84) bytes of data.
 64 bytes from 136.243.155.166: icmp_seq=1 ttl=44 time=243 ms
 64 bytes from 136.243.155.166: icmp_seq=2 ttl=44 time=243 ms
