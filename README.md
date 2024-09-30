@@ -366,9 +366,34 @@ https://136.243.155.166:8006/
 ![reboot system from VNV](rebootsystem.jpg)
 
 
+![alt text](proxmoxpostinstall.jpg)
+nano /etc/apt/sources.list
 
 
+[choices](<config update package.jpg>)
 
+![post intall questions](<postinstall final.jpg>)
+
+
+![set network interfaces](networkinterfaces.jpg)
+
+
+# Debian Bookworm (12) Main repository!
+deb http://mirror.hetzner.com/debian/packages bookworm main contrib non-free
+deb http://deb.debian.org/debian bookworm main contrib non-free
+
+# Debian Bookworm (12) Updates repository
+deb http://mirror.hetzner.com/debian/packages bookworm-updates main contrib non-free
+deb http://deb.debian.org/debian bookworm-updates main contrib non-free
+
+# Debian Bookworm (12) Security updates
+deb http://security.debian.org/debian-security bookworm-security main contrib non-free
+
+# Proxmox VE 8.x No-Subscription Repository
+deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription
+
+apt update
+apt full-upgrade -y
 
 
 
