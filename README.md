@@ -363,6 +363,8 @@ https://136.243.155.166:8006/
 
 ![proxmox firewall](<proxmox firewall.jpg>)
 
+![reboot system from VNV](rebootsystem.jpg)
+
 
 
 
@@ -401,6 +403,7 @@ https://136.243.155.166:8006/
 136.243.155.166:5901
 
 nano ~/.ssh/config
+cd ~/.ssh
    ```
 
    Replace the IP address with your server's actual address
@@ -431,12 +434,13 @@ https://www.hawaii.edu/askus/1874
 
 
 
-
 3. Configure SSH:
-
+     ls -l ~/.ssh
    ```bash
    sudo nano /etc/ssh/sshd_config
    ```
+
+   cat ~/.ssh/id_4096.pub
 
    Add or modify these lines:  
 
@@ -558,20 +562,9 @@ usermod -aG sudo admin
 
 Installing Promox VE 
 
-- Get in rescue mode and download promox
-wget -4 -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_8.2-2.iso
-
-check the integrity of the file: 
-sha256sum pve.iso
-ssh
-
-Create a bootable USB drive. Since you're in rescue mode, we'll write the ISO directly to one of your disks. Be very careful with this step to avoid data loss. Let's use nvme1n1 for this example:
-
-dd if=pve.iso of=/dev/nvme1n1 bs=1M status=progress
-This command will overwrite the entire disk, so make sure you're using the correct device.
-
-
-
+https://cyanlabs.net/tutorials/install-proxmox-on-a-hetzner-dedicated-server-with-1-ip-using-sdn-and-without-kvm-using-qemu/
+https://cyanlabs.net/tutorials/install-proxmox-on-a-hetzner-dedicated-server-with-1-ip-using-sdn-and-without-kvm-using-qemu/#google_vignette
+![alt text](<poroxmox installer.jpg>)
 
 
 2. Installing raid system
