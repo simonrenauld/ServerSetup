@@ -586,7 +586,7 @@ usermod -aG sudo admin
 
 
 Installing Promox VE 
-
+https://136.243.155.166:8006/
 https://cyanlabs.net/tutorials/install-proxmox-on-a-hetzner-dedicated-server-with-1-ip-using-sdn-and-without-kvm-using-qemu/
 https://cyanlabs.net/tutorials/install-proxmox-on-a-hetzner-dedicated-server-with-1-ip-using-sdn-and-without-kvm-using-qemu/#google_vignette
 ![alt text](<poroxmox installer.jpg>)
