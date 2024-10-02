@@ -154,6 +154,8 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 - **Outgoing Traffic:** Ports 25 and 465 are blocked by default; unblocking available upon request
 - **Downloads:** Tools, packages, and OS images available at [Hetzner Downloads](https://download.hetzner.com)
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
+- **How to install NextCloud on Proxmox with Ubuntu?** https://edywerder.ch how-to-install-nextcloud-on-proxmox-with-ubuntu/
+- **Proxmox Containers vs VM: Which is Right for Your Needs?** https://edywerder.ch/proxmox-containers-vs-vm/
 
 ### SSH isuees 
 Certainly. I'll guide you through a series of command-line steps to verify and troubleshoot your SSH connection issues. Run these commands on the server you're trying to connect to (136.243.155.166). You'll need root access or the ability to use sudo.
