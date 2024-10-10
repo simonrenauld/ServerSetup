@@ -156,7 +156,8 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 - **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
 - **How to install NextCloud on Proxmox with Ubuntu?** https://edywerder.ch how-to-install-nextcloud-on-proxmox-with-ubuntu/
 - **Proxmox Containers vs VM: Which is Right for Your Needs?** https://edywerder.ch/proxmox-containers-vs-vm/
-
+https://www.youtube.com/watch?v=cf3OljqAxEU
+https://github.com/ariadata/proxmox-hetzner?tab=readme-ov-file
 ### SSH isuees 
 Certainly. I'll guide you through a series of command-line steps to verify and troubleshoot your SSH connection issues. Run these commands on the server you're trying to connect to (136.243.155.166). You'll need root access or the ability to use sudo.
 
