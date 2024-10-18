@@ -6,10 +6,9 @@ https://robot.hetzner.com/
 
 Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs.
 
-Understanding components: https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/
+!Understanding components: https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/
 
-![Buying a server](ServerSetup\01_Infrastructure_hardware\screenshots\HetzerServer.jpg)
-=
+## ![Buying a server](ServerSetup\01_Infrastructure_hardware\screenshots\HetzerServer.jpg)
 
 
 
