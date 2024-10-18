@@ -9,6 +9,9 @@ Simple as it is: For very little per month you can own/rent your own deficated s
 !Understanding components: https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/
 
 
+https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg
+
+
 
 
 ## 2. Infrastructure Summary
