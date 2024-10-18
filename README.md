@@ -6,11 +6,8 @@ https://robot.hetzner.com/
 
 Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs.
 
-![alt text](image-1.png)
-![alt text](image-2.png)
-
-
-
+![Buying a server](ServerSetup\01_Infrastructure_hardware\screenshots\HetzerServer.jpg)
+=
 
 
 
@@ -27,9 +24,44 @@ In Progress:
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 1. Infrastructure Summary
 
-[View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
 
 ### 1.1 Operating Systems
 
