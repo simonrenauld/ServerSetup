@@ -4,16 +4,10 @@
 
 https://robot.hetzner.com/
 
-Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs.
+Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs. As low as 
 
 ![Buying a server](ServerSetup\01_Infrastructure_hardware\screenshots\HetzerServer.jpg)
 =
-
-
-
-
-
-
 
 
 
