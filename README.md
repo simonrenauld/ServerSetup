@@ -12,6 +12,21 @@ Simple as it is: For very little per month you can own/rent your own deficated s
 
 
 
+
+
+
+
+
+
+
+
+In Progress:
+
+
+
+
+
+
 ## 1. Infrastructure Summary
 
 [View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
@@ -23,17 +38,16 @@ Simple as it is: For very little per month you can own/rent your own deficated s
 - macOS: Apple's proprietary operating system for its computers, known for its user-friendly interface and integration with Apple devices.
 - Android: A mobile operating system based on Linux, used by most smartphones and tablets.
 - iOS: Apple's mobile operating system, used by iPhones and iPads.
-Chrome OS: A lightweight operating system developed by Google, primarily designed for web-based applications.
+-- Chrome OS: A lightweight operating system developed by Google, primarily designed for web-based applications.
 - FreeBSD: A Unix-like operating system known for its stability and performance.
 - OpenBSD: A BSD-based operating system with a strong focus on security.
 - Solaris: A proprietary operating system developed by Oracle, primarily used for servers and high-performance computing.
 - AIX: A proprietary operating system developed by IBM for its Power Systems hardware.
 - HP-UX: A proprietary operating system developed by HP for its Itanium-based servers.
 
-<<<<<<< HEAD
-## 1.2. Virtualization Platform
+### 1.2. Virtualization Platform
 
-#### Proxmox VE is a free, open-source virtualization platform for Linux. It uses KVM, a powerful hypervisor, and offers a web-based management interface. You can create VMs and containers, manage storage, and ensure high availability.
+Proxmox VE is a free, open-source virtualization platform for Linux. It uses KVM, a powerful hypervisor, and offers a web-based management interface. You can create VMs and containers, manage storage, and ensure high availability.
 
 - KVM-based virtualization: Leveraging the efficient and high-performance KVM hypervisor, Proxmox VE allows you to create and run virtual machines (VMs) directly on your physical hardware.
 - Web-based management: The user-friendly web interface provides a centralized dashboard for managing all your virtualized environments, including VMs, containers, and storage.
@@ -43,6 +57,7 @@ Chrome OS: A lightweight operating system developed by Google, primarily designe
 - API integration: The platform provides a RESTful API, allowing for automation and integration with other systems.
 
 #### 1.2.1 Software and Services
+
 =======
 ### Virtual Machines
 
@@ -51,47 +66,54 @@ The choice of virtualization technology depends on your specific needs and envir
 Proxmox VE:
 
 Pros:
-Open-source and free.
-Supports both KVM and LXC containers.
-Web-based management interface.
-Good for enterprise environments.
+- Open-source and free.
+- Supports both KVM and LXC containers.
+- Web-based management interface.
+- Good for enterprise environments.
+
 Cons:
-Requires a dedicated server.
-Might be overkill for small-scale or personal projects.
+- Requires a dedicated server.
+- Might be overkill for small-scale or personal projects.
+
 VirtualBox:
 
 Pros:
-Free and open-source.
-Easy to set up and use.
-Good for desktop virtualization.
+- Free and open-source.
+- Easy to set up and use.
+- Good for desktop virtualization.
+
 Cons:
-Not as performant as bare-metal hypervisors.
-Limited scalability for enterprise use.
+- Not as performant as bare-metal hypervisors.
+- Limited scalability for enterprise use.
+
 VMware ESXi:
 
 Pros:
-High performance and reliability.
-Widely used in enterprise environments.
-Extensive support and documentation.
+- High performance and reliability.
+- Widely used in enterprise environments.
+- Extensive support and documentation.
+
 Cons:
-Requires a license for advanced features.
-Can be complex to set up and manage.
+- Requires a license for advanced features.
+- Can be complex to set up and manage.
+
 KVM (Kernel-based Virtual Machine):
 
 Pros:
-Integrated into the Linux kernel.
-High performance and scalability.
-Suitable for both personal and enterprise use.
+- Integrated into the Linux kernel.
+- High performance and scalability.
+- Suitable for both personal and enterprise use.
+
 Cons:
-Requires more manual setup and management.
-No native GUI management interface (though tools like Virt-Manager can be used).
+- Requires more manual setup and management.
+- No native GUI management interface (though tools like Virt-Manager can be used).
+
 Recommendations:
-For Personal Use or Small Projects: VirtualBox is a good choice due to its ease of use and setup.
-For Enterprise or Large-Scale Deployments: Proxmox VE or VMware ESXi are better suited due to their advanced features and scalability.
-For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performance but requires more hands-on management.
+- For Personal Use or Small Projects: VirtualBox is a good choice due to its ease of use and setup.
+- For Enterprise or Large-Scale Deployments: Proxmox VE or VMware ESXi are better suited due to their advanced features and scalability.
+- For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performance but requires more hands-on management.
 
 ### 1.2 Software and Services
->>>>>>> 33d1083 (server)
 
 - Web Servers: Nginx, Apache
 - Databases: MySQL, PostgreSQL, MongoDB
@@ -153,20 +175,3 @@ For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performanc
 - Project Management Integration: AI-powered task and project tracking
 - AI Dashboard: Centralized control and monitoring interface
 - Enhanced Compute Power: Additional CPUs, RAM, and GPUs
-
-## 2. Server Setup
-
-### 2.1 Why Create Server from Rescue
-
-- Cost-effective and flexible
-- Activated, currently booted in the Rescue System
-
-### 2.2 Getting Started
-
-- **Outgoing Traffic:** Ports 25 and 465 are blocked by default; unblocking available upon request
-- **Downloads:** Tools, packages, and OS images available at [Hetzner Downloads](https://download.hetzner.com)
-- **Quick Start Guide:** Available at [Hetzner Docs](https://docs.hetzner.com)
-- **How to install NextCloud on Proxmox with Ubuntu?** https://edywerder.ch how-to-install-nextcloud-on-proxmox-with-ubuntu/
-- **Proxmox Containers vs VM: Which is Right for Your Needs?** https://edywerder.ch/proxmox-containers-vs-vm/
-https://www.youtube.com/watch?v=cf3OljqAxEU
-https://github.com/ariadata/proxmox-hetzner?tab=readme-ov-file
