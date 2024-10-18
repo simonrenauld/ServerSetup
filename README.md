@@ -2,13 +2,13 @@
 
 ## 1. Buying a Server from Hetzner
 
-https://robot.hetzner.com/
+[Hetzner Robot Portal](https://robot.hetzner.com/)
 
-Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs.
+Simple as it is: For very little per month, you can own/rent your own dedicated server to meet any requirements and needs.
 
-Understanding components of a server: https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/
+[Understanding components of a server](https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/)
 
-[<img alt="alt_text" width="40px" src="images/image.PNG" />](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)
+[![Hetzner Server](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)
 
 
 
