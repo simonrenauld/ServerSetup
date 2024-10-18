@@ -12,35 +12,13 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 
 
 
+Up Next!!! 
 
-
-## 2. Infrastructure Summary
-
-
-
+## 1.1. Infrastructure Summary
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## 1.2. IP and Firewall Settings
 
 
 
