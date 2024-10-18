@@ -8,7 +8,7 @@ Simple as it is: For very little per month you can own/rent your own deficated s
 
 !Understanding components: https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/
 
-## ![Buying a server](ServerSetup\01_Infrastructure_hardware\screenshots\HetzerServer.jpg)
+## ![Buying a server](simonrenauld.github.io\images\screenshots\HetzerServer.jpg)
 
 
 
