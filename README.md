@@ -1,5 +1,45 @@
 # Cloud Server Setup Guide
 
+## 1. Buying a Server from Hetzner
+
+https://robot.hetzner.com/
+
+Simple as it is: For very little per month you can own/rent your own deficated server to meet any requirements and needs.
+
+![alt text](image-1.png)
+![alt text](image-2.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 1. Infrastructure Summary
 
 [View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
