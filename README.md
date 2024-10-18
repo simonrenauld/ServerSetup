@@ -12,34 +12,6 @@ Simple as it is: For very little per month you can own/rent your own deficated s
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## 1. Infrastructure Summary
 
 [View Infrastructure Diagram](01_Infrastructure_hardware/infrastructure_diagram.html)
