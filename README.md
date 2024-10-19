@@ -11,7 +11,7 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 [![Hetzner Server](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)
 
 
-### 1.1. Hetzer Resuce mode and Server Info:
+### 1.1. Hetzner Rescue mode and Server Info:
 ```
 root@rescue ~ # # run this command to get your interface name
 (udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)
