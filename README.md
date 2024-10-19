@@ -12,7 +12,7 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 
 
 ### Get your server info:
-
+```
 root@rescue ~ # # run this command to get your interface name
 (udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)
 
@@ -26,7 +26,7 @@ root@rescue ~ # # run this command to get your MAC address
 
 root@rescue ~ # # run this command to get your IPv6 CIDR
 (ip address show "$(udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)" | grep global | grep "inet6 "| xargs | cut -d" " -f2)
-
+```
 
 
 Up Next!!! 
