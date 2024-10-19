@@ -57,6 +57,10 @@ printf "change vnc password\n%s\n" "abcd_123456" | qemu-system-x86_64 -enable-kv
 
 
 
+
+
+
+
 Up Next!!! 
 
 ## 1.1. Infrastructure Summary
