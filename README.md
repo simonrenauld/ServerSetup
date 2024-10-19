@@ -11,14 +11,55 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 [![Hetzner Server](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)](https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg)
 
 
+### Get your server info:
+
+root@rescue ~ # # run this command to get your interface name
+(udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)
+
+root@rescue ~ # # run this command to get your main IP4 and Netmask
+(ip address show "$(udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)" | grep global | grep "inet "| xargs | cut -d" " -f2)
+
+root@rescue ~ # (ip route | grep default | xargs | cut -d" " -f3)
+
+root@rescue ~ # # run this command to get your MAC address
+(ifconfig eth0 | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}')
+
+root@rescue ~ # # run this command to get your IPv6 CIDR
+(ip address show "$(udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)" | grep global | grep "inet6 "| xargs | cut -d" " -f2)
+
+
 
 Up Next!!! 
 
 ## 1.1. Infrastructure Summary
 
 
-
 ## 1.2. IP and Firewall Settings
+
+
+
+
+
+
+
+
+
+## 1.3. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
