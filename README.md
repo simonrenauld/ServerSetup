@@ -31,6 +31,32 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 
 ### 1.2. QEMU command with VNC setup (This command is starting a QEMU virtual machine to install Proxmox from the ISO, with the ability to control it over VNC (Virtual Network Computing)
+
+printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd_123456). It's printing a command that will later be passed into QEMU's monitor interface to set the VNC password.
+
+qemu-system-x86_64: This is the command to start a QEMU virtual machine for 64-bit x86 architectures.
+
+-enable-kvm: Enables hardware virtualization support (KVM), which improves performance if supported by your system.
+
+-cpu host: This tells QEMU to emulate the host's CPU type for the VM, meaning the VM will use the same type of CPU as the physical machine.
+
+-smp 4: Specifies the number of CPU cores (4) allocated to the virtual machine.
+
+-m 4096: Allocates 4096 MB (4 GB) of RAM to the virtual machine.
+
+-boot d: Tells the VM to boot from the cdrom (the Proxmox ISO in this case).
+
+-cdrom ./pve.iso: This specifies the Proxmox ISO file (pve.iso) as the bootable CD image.
+
+-drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio: Sets the first disk drive for the VM. It's pointing to /dev/nvme0n1 (a physical NVMe disk) and using the virtio driver for better disk performance in the VM.
+
+-drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio: Sets the second disk drive for the VM, also using the virtio driver.
+
+-vnc :0,password=on: Enables a VNC server on display :0 (port 5900), and the option password=on ensures that the VNC connection is password-protected.
+
+-monitor stdio: Opens the QEMU monitor in the terminal, allowing you to interact with the VM via commands, including changing the VNC password.
+
+-no-reboot: Prevents the VM from automatically rebooting after shutting down, which is useful during installations where you might want to control the reboot manually.
 ```
 wget -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_7.4-1.iso 
 printf "change vnc password\n%s\n" "abcd_123456" | qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 4096 -boot d -cdrom ./pve.iso -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio -vnc :0,password=on -monitor stdio -no-reboot
