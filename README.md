@@ -31,29 +31,33 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 ### 1.2. Server Virtualization Oveview
 
-Congrats on setting up your virtual server! Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the hypervisor—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). 
-A bare metal hypervisor bridges physical hardware and VMs, allowing seamless migration while maintaining functionality. VMs don't interact with hardware directly; they interface with the hypervisor, ensuring a consistent virtual environment across different hardware setups.
+### 1.2. Virtualization and Proxmox VE
 
-Proxmox Virtual Environment (VE)
-Proxmox VE is a powerful, adaptable virtualization solution offering enterprise-grade features without high costs. It's ideal for managing data centers, educational institutions, or even home labs. Proxmox is notable for its versatility and affordability, letting you build a fully operational virtual infrastructure for free, with paid options offering extra support and updates.
+Congrats on setting up your virtual server! Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). A **bare metal hypervisor** bridges physical hardware and VMs, allowing seamless migration while maintaining functionality. VMs don't interact with hardware directly; they interface with the hypervisor, ensuring a consistent virtual environment across different hardware setups.
 
-Key Features
-Free & Open Source: Community edition is free; paid versions offer additional features for production environments.
-Built-in Firewall: Highly configurable, offering per-VM firewall controls, perfect for multi-tenant environments.
-Open vSwitch Support: Reduces network management overhead and enables complex virtual network setups.
-GUI: User-friendly interface for managing clusters, VMs, storage, and networking.
-KVM Support: Full OS virtualization for running multiple operating systems like Linux and Windows.
-LXC Support: Lightweight Linux container-based virtualization for efficient resource use.
-Storage Options
+#### Proxmox Virtual Environment (VE)
+Proxmox VE is a powerful, adaptable virtualization solution offering **enterprise-grade features** without high costs. It's ideal for managing data centers, educational institutions, or even home labs. Proxmox is notable for its **versatility** and **affordability**, letting you build a fully operational virtual infrastructure for free, with paid options offering extra support and updates.
+
+#### Key Features
+
+- **Free & Open Source**: Community edition is free; paid versions offer additional features for production environments.
+- **Built-in Firewall**: Highly configurable, offering **per-VM firewall controls**, perfect for multi-tenant environments.
+- **Open vSwitch Support**: Reduces network management overhead and enables **complex virtual network setups**.
+- **GUI**: **User-friendly interface** for managing clusters, VMs, storage, and networking.
+- **KVM Support**: Full **OS virtualization** for running multiple operating systems like Linux and Windows.
+- **LXC Support**: Lightweight **Linux container-based virtualization** for efficient resource use.
+
+#### Storage Options
 Proxmox VE supports various storage types:
 
-Local directories
-LVM / LVM Thin
-NFS
-iSCSI
-GlusterFS
-Ceph RADOS Block Devices (RBD)
-ZFS
+- Local directories
+- **LVM / LVM Thin**
+- **NFS**
+- **iSCSI**
+- **GlusterFS**
+- **Ceph RADOS Block Devices (RBD)**
+- **ZFS**
+
 This wide range of storage options provides flexibility in managing data within your virtual environment.
 
 
