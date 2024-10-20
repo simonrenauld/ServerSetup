@@ -34,6 +34,8 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 
 printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd_123456). It's printing a command that will later be passed into QEMU's monitor interface to set the VNC password.
 
+
+```
 qemu-system-x86_64: This is the command to start a QEMU virtual machine for 64-bit x86 architectures.
 
 -enable-kvm: Enables hardware virtualization support (KVM), which improves performance if supported by your system.
@@ -57,7 +59,6 @@ qemu-system-x86_64: This is the command to start a QEMU virtual machine for 64-b
 -monitor stdio: Opens the QEMU monitor in the terminal, allowing you to interact with the VM via commands, including changing the VNC password.
 
 -no-reboot: Prevents the VM from automatically rebooting after shutting down, which is useful during installations where you might want to control the reboot manually.
-```
 wget -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_7.4-1.iso 
 printf "change vnc password\n%s\n" "abcd_123456" | qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 4096 -boot d -cdrom ./pve.iso -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio -vnc :0,password=on -monitor stdio -no-reboot
 
