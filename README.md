@@ -30,7 +30,7 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 (ip address show "$(udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)" | grep global | grep "inet6 "| xargs | cut -d" " -f2)
 ```
 
-### 1.2. QEMU command with VNC setup
+### 1.2. QEMU command with VNC setup (This command is starting a QEMU virtual machine to install Proxmox from the ISO, with the ability to control it over VNC (Virtual Network Computing)
 ```
 wget -O pve.iso https://enterprise.proxmox.com/iso/proxmox-ve_7.4-1.iso 
 printf "change vnc password\n%s\n" "abcd_123456" | qemu-system-x86_64 -enable-kvm -cpu host -smp 4 -m 4096 -boot d -cdrom ./pve.iso -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio -vnc :0,password=on -monitor stdio -no-reboot
