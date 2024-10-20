@@ -31,8 +31,10 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 
 ### 1.2. QEMU command with VNC setup (This command is starting a QEMU virtual machine to install Proxmox from the ISO, with the ability to control it over VNC (Virtual Network Computing)
+```
 
 printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd_123456). It's printing a command that will later be passed into QEMU's monitor interface to set the VNC password.
+```
 
 
 ```
