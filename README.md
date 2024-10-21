@@ -31,7 +31,9 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 ### 1.2. Server Virtualization Oveview
 
-WHy starting by server
+Many businesses start by managing data in Excel files, and as they grow, they transition to servers and cloud services with company maturity. However, the core principles often get lost along the way. While successful projects are remembered, failed projects carry valuable lessons that shouldn't be overlooked.
+
+There's also a tendency for different departments to focus only on the most successful aspects of the company, creating a bias in how growth is perceived. This is where virtualization and tools like Proxmox come into play, enabling us to build a perfect testing lab that preserves both success and failure, allowing for deeper insights and innovation.
 
 ### 1.3. Virtualization and Proxmox VE
 
