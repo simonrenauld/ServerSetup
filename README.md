@@ -7,6 +7,8 @@
 Simple as it is: For very little per month, you can own/rent your own dedicated server to meet any requirements and needs.
 
 [Understanding components of a server](https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/)
+[What is a server](https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/)
+
 
 ![Hetzner Server]<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg">
   <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="600" />
