@@ -78,6 +78,7 @@ QEMU is a type-2 hypervisor that uses dynamic translation to emulate CPU instruc
 In conjunction with other virtualization technologies like KVM or Xen, it allows the guest to run directly on the host CPU at near-native speed.
 
 [QEMU Documentation](https://qemu-project.gitlab.io/qemu/system/monitor.html)
+[QEMU from terminal](https://www.baeldung.com/linux/qemu-from-terminal)
 
 
 with VNC setup (This command is starting a QEMU virtual machine to install Proxmox from the ISO, with the ability to control it over VNC (Virtual Network Computing)
