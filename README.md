@@ -31,12 +31,14 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 ### 1.2. Server Virtualization Oveview
 
-### 1.2. Virtualization and Proxmox VE
+### 1.3. Virtualization and Proxmox VE
 
-Congrats on setting up your virtual server! Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). A **bare metal hypervisor** bridges physical hardware and VMs, allowing seamless migration while maintaining functionality. VMs don't interact with hardware directly; they interface with the hypervisor, ensuring a consistent virtual environment across different hardware setups.
+Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). 
+A **bare metal hypervisor** bridges physical hardware and VMs, allowing seamless migration while maintaining functionality. VMs don't interact with hardware directly; they interface with the hypervisor, ensuring a consistent virtual environment across different hardware setups.
 
 #### Proxmox Virtual Environment (VE)
-Proxmox VE is a powerful, adaptable virtualization solution offering **enterprise-grade features** without high costs. It's ideal for managing data centers, educational institutions, or even home labs. Proxmox is notable for its **versatility** and **affordability**, letting you build a fully operational virtual infrastructure for free, with paid options offering extra support and updates.
+Proxmox VE is a powerful, adaptable virtualization solution offering **enterprise-grade features** without high costs. It's ideal for managing data centers, educational institutions, or even home labs. 
+Proxmox is notable for its **versatility** and **affordability**, letting you build a fully operational virtual infrastructure for free, with paid options offering extra support and updates.
 
 #### Key Features
 
@@ -66,7 +68,6 @@ This wide range of storage options provides flexibility in managing data within 
 
 ### 1.4. QEMU command with VNC setup (This command is starting a QEMU virtual machine to install Proxmox from the ISO, with the ability to control it over VNC (Virtual Network Computing)
 ```
-
 printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd_123456). It's printing a command that will later be passed into QEMU's monitor interface to set the VNC password.
 ```
 
@@ -75,27 +76,16 @@ printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd
 ### QEMU Command Breakdown
 
 - **qemu-system-x86_64**: This is the command to start a QEMU virtual machine for 64-bit x86 architectures.
-
 - **-enable-kvm**: Enables hardware virtualization support (KVM), which improves performance if supported by your system.
-
 - **-cpu host**: This tells QEMU to emulate the host's CPU type for the VM, meaning the VM will use the same type of CPU as the physical machine.
-
 - **-smp 4**: Specifies the number of CPU cores (4) allocated to the virtual machine.
-
 - **-m 4096**: Allocates 4096 MB (4 GB) of RAM to the virtual machine.
-
 - **-boot d**: Tells the VM to boot from the CDROM (the Proxmox ISO in this case).
-
 - **-cdrom ./pve.iso**: This specifies the Proxmox ISO file (`pve.iso`) as the bootable CD image.
-
 - **-drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio**: Sets the first disk drive for the VM. It's pointing to `/dev/nvme0n1` (a physical NVMe disk) and using the `virtio` driver for better disk performance in the VM.
-
 - **-drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio**: Sets the second disk drive for the VM, also using the `virtio` driver.
-
 - **-vnc :0,password=on**: Enables a VNC server on display `:0` (port 5900), and the option `password=on` ensures that the VNC connection is password-protected.
-
 - **-monitor stdio**: Opens the QEMU monitor in the terminal, allowing you to interact with the VM via commands, including changing the VNC password.
-
 - **-no-reboot**: Prevents the VM from automatically rebooting after shutting down, which is useful during installations where you might want to control the reboot manually.
 
 
@@ -104,7 +94,6 @@ printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd
 
 
 
-<<<<<<< HEAD
 =======
 **The Proxmox Virtual Environment (VE)**
 One of the most compelling virtualization solutions available today is the Proxmox Virtual Environment (VE), a cluster-based hypervisor. Proxmox is unique in that it offers enterprise-level features at a small-business-friendly price, without compromising on stability or performance. Whether it's supporting a massive data center, a small educational institution, or even a home lab, Proxmox VE is highly adaptable.
