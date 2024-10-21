@@ -31,6 +31,8 @@ root@rescue ~ # # run this command to get your IPv6 CIDR
 ```
 ### 1.2. Server Virtualization Oveview
 
+WHy starting by server
+
 ### 1.3. Virtualization and Proxmox VE
 
 Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). 
