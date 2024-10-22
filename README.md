@@ -10,7 +10,7 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 [What is a server](https://www.spiceworks.com/tech/tech-general/articles/what-is-a-server/)
 
 
-![Hetzner Server]<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg">
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg">
   <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
 </a>
 
