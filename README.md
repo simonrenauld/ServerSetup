@@ -122,11 +122,13 @@ RAID: RAID is a technology that uses multiple hard drives to increase redundancy
 https://136.243.155.166:8006/
 
 
-### 1.5. Getting started with Proxmox
-https://your.ip.1111.166:8006/
+### 1.5. Getting started with Proxmox GUI 
+to access: https://your.ip.1111.166:8006/ 
 
 
-
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg](https://github.com/simonrenauld/ServerSetup/blob/main/proxmoxinfra.PNG">
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
+</a>
 
 
 
