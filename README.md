@@ -1,4 +1,4 @@
-# Cloud Server Setup Guide
+# Buidling 𝐚 𝗰𝘂𝘀𝘁𝗼𝗺 𝗰𝗹𝗼𝘂𝗱 𝐀.𝐈. 𝐃𝐚𝐭𝐚 𝗶𝗻𝗳𝗿𝗮𝘀𝘁𝗿𝘂𝗰𝘁𝘂𝗿𝗲
 
 ## 1. Buying a Server from Hetzner
 
