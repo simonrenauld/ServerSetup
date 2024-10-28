@@ -114,6 +114,17 @@ printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd
 - **-no-reboot**: Prevents the VM from automatically rebooting after shutting down, which is useful during installations where you might want to control the reboot manually.
 
 
+
+
+BOOT BACK INTO THE DRIVES
+The changes made:
+1.	Removed -bios /usr/share/ovmf/OVMF.fd: This option was specifying the UEFI firmware. For legacy BIOS boot, we don't need to specify a BIOS file as QEMU will use its default BIOS.
+2. add port 2222
+```
+qemu-system-x86_64 -enable-kvm -cpu host -k en-us -device virtio-net,netdev=net0 -netdev user,id=net0,hostfwd=tcp:127.0.0.1:2222-:22 -smp 4 -m 4096 -drive file=/dev/nvme0n1,format=raw,media=disk,if=virtio -drive file=/dev/nvme1n1,format=raw,media=disk,if=virtio -vnc :0
+```
+
+
 Difference Between Unraid and RAID:
 Unraid: Unraid is a flexible operating system designed for NAS (Network Attached Storage) servers. It allows you to mix and match drives of different sizes and uses a parity drive for redundancy. It's designed for home users or small businesses who need a simple, flexible storage solution.
 
@@ -143,17 +154,13 @@ to access: https://your.ip.1111.166:8006/
 
 
 
+ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
-
-## 1.3. 
-
+## 1.3. Proxmox GUI
 
 
-
-
-
-
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="gui" width="400" />
 
 
 
@@ -164,6 +171,10 @@ to access: https://your.ip.1111.166:8006/
 
 
 
+
+
+
+### 
 
 
 
