@@ -177,7 +177,11 @@ ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
 
-### 
+### INSTALLLING UBUNTU VIRTUAL MACHINE ON PROXMOX
+
+
+
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-cores.jpg" alt="gui" width="400" />
 
 
 
@@ -186,17 +190,14 @@ ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
 
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-memory.jpg" alt="gui" width="400" />
 
 
 
 
 
 
-
-
-
-
-
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/start-vm.jpg" alt="gui" width="400" />
 
 
 
