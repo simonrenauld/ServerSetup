@@ -158,6 +158,9 @@ ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
 ## 1.3. Proxmox GUI
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
+</a>
 
 
 <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="gui" width="400" />
