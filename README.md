@@ -198,11 +198,10 @@ iface vmbr1 inet manual
         bridge-vlan-aware yes
         bridge-vids 2-4094
 
-
 ```
 
  nano /etc/dhcp/dhcpd.conf
-
+```
 add your subnet to connect VM to internet: 
 
 #  update with your own network informatiosn
@@ -215,7 +214,7 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 }
 
  ## Check connections 
-
+```
 
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
 
