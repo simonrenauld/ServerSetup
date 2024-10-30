@@ -263,6 +263,46 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
+Installling nextcloud : 
+
+Advantages
+All the mobile and desktop applications you would expect - Linux (packaged in Fedora,) Windows, Mac, Android, iOS and even F-Droid and Windows Mobile.
+Unlimited free storage space (depends on your hardware, and you have to pay electricity bill.)
+Use with your own domains. Example cloud.rhea-ayase.eu
+You can customize the looks, as I have Bunnycloud, without any reference to nextcloud.com or any other advertisement being forced on you.
+Share links protected by password.
+Share links with expiration date.
+Share links into which people can upload files for you.
+Share links of folders, into which people can not only upload files, but also download from. And they can be protected by password or have an expiration date.
+Disadvantages
+
+
+
+
+Install Next Cloud Container:
+
+ <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Countainer Next-Cloud.jpg" alt="gui" width="400" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### 1.1 Operating Systems
