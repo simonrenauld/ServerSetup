@@ -97,7 +97,7 @@ printf "change vnc password\n%s\n" "abcd_123456": This sets a VNC password (abcd
 ```
 
 
-```
+
 #### QEMU Command Breakdown
 
 - **qemu-system-x86_64**: This is the command to start a QEMU virtual machine for 64-bit x86 architectures.
