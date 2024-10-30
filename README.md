@@ -154,55 +154,12 @@ to access: https://your.ip.1111.166:8006/
 
 
 
-ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
-
-
-## 1.3. Proxmox GUI
-<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
-  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
-</a>
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="gui" width="400" />
 
 
 
 
 
-
-
-
-
-
-
-
-
-### INSTALLLING UBUNTU VIRTUAL MACHINE ON PROXMOX
-
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-cores.jpg" alt="gui" width="400" />
-
-
-
-
-
-
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-memory.jpg" alt="gui" width="400" />
-
-
-
-
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/start-vm.jpg" alt="gui" width="400" />
-
-
-
-
-Installing Fedora VM on Proxmox and Set networking connections
+### Installing Fedora VM on Proxmox and Set networking connections
 
 ```
 
@@ -262,7 +219,50 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
 
+ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
+
+## 1.3. Proxmox GUI
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
+</a>
+
+
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="gui" width="400" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+### INSTALLLING UBUNTU VIRTUAL MACHINE ON PROXMOX
+
+
+
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-cores.jpg" alt="gui" width="400" />
+
+
+
+
+
+
+
+
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-memory.jpg" alt="gui" width="400" />
+
+
+
+
+
+
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/start-vm.jpg" alt="gui" width="400" />
 Installling nextcloud : 
 
 Advantages
