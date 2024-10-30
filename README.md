@@ -202,18 +202,65 @@ ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
 
+Installing Fedora VM on Proxmox and Set networking connections
+
+```
+
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+iface lo inet6 loopback
+
+iface enp0.... inet manual
+iface enp0....inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address youripaddress/26
+        gateway yourgateway
+        bridge-ports enp0....
+        bridge-stp off
+        bridge-fd 1
+        bridge-vlan-aware yes
+        bridge-vids 2-4094
+        hwaddress xxxxxxxxxxx
+        pointopoint xxxxxxxxxxxxxx
+        up sysctl -p
+
+iface vmbr0 inet6 static
+        address xxxxxxxxx/64
+        gateway xxxx::1
+
+auto vmbr1
+iface vmbr1 inet manual
+        bridge-ports none
+        bridge-stp off
+        bridge-fd 0
+        bridge-vlan-aware yes
+        bridge-vids 2-4094
 
 
+```
+
+ nano /etc/dhcp/dhcpd.conf
+
+add your subnet to connect VM to internet: 
+
+#  update with your own network informatiosn
+# This is a very basic subnet declaration.
+subnet 192.222.222.0 netmask 111.111.111.0 {
+    range 111.111.111.50 111.111.111.200;
+    option routers 111.111.111.5;
+    option subnet-mask 111.111.11.0;
+    option domain-name-servers 8.8.8.8, 8.8.4.4, 1.1.1.1;
+}
+
+ ## Check connections 
 
 
-
-
-
-
-
-
-
-
+ <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
 
