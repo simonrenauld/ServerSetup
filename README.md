@@ -159,7 +159,7 @@ to access: https://your.ip.1111.166:8006/
 
 
 
-### Installing Fedora VM on Proxmox and Set networking connections
+### Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
 ```
 
