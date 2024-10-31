@@ -171,6 +171,9 @@ Using network PXE boot
 
 ### 1.2.1 Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="400" />
+
+
 ```
 
 source /etc/network/interfaces.d/*
@@ -226,6 +229,11 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 ```
 
+
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
+</a>
+
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
@@ -234,20 +242,6 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 
 
-<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
-  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
-</a>
-
-
-
-
-## 1.3. Proxmox GUI
-<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
-  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
-</a>
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="gui" width="400" />
 
 
 
