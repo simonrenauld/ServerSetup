@@ -230,14 +230,14 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 ```
 
 
-<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
-  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
-</a>
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="400" />
 
- <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
-  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Ubuntu and Fedora 40 VM.jpg" alt="gui" width="400" />
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
+
+
 
 
 
