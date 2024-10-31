@@ -229,7 +229,7 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
-  <img src="ServerSetup\01_Infrastructure_hardware\screenshots\Ubuntu and Fedora 40 VM.jpg" alt="gui" width="400" />
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Ubuntu and Fedora 40 VM.jpg" alt="gui" width="400" />
 
 
 
