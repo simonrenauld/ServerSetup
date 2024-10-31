@@ -223,10 +223,15 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
     option domain-name-servers 8.8.8.8, 8.8.4.4, 1.1.1.1;
 }
 
- ## Check connections 
+
 ```
 
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
+
+
+  <img src="ServerSetup\01_Infrastructure_hardware\screenshots\Ubuntu and Fedora 40 VM.jpg" alt="gui" width="400" />
+
+
 
 
 <a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
@@ -234,9 +239,6 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 </a>
 
 
- 
-
-ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
 
 ## 1.3. Proxmox GUI
