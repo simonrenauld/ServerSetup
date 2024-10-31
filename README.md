@@ -16,6 +16,7 @@ Simple as it is: For very little per month, you can own/rent your own dedicated 
 
 
 ### 1.1. Hetzner Rescue mode and Server Info:
+
 ```
 root@rescue ~ # # run this command to get your interface name
 (udevadm info -e | grep -m1 -A 20 ^P.*eth0 | grep ID_NET_NAME_PATH | cut -d'=' -f2)
@@ -228,7 +229,9 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
-
+<a href="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg">
+  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/HetzerServer.jpg" alt="Hetzner Server" width="400" />
+</a>
 
 
  
