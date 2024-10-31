@@ -157,9 +157,7 @@ to access: https://your.ip.1111.166:8006/
 
 
 
-
-
-### Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
+### 1.2.1 Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
 ```
 
@@ -217,6 +215,12 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 ```
 
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
+
+
+
+
+
+ 
 
 ServerSetup\01_Infrastructure_hardware\screenshots\proxmoxgui.jpg
 
