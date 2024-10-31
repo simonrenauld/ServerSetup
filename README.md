@@ -144,16 +144,27 @@ to access: https://your.ip.1111.166:8006/
 
 
 
-## 1.1. Infrastructure Summary
+## 1.1. Kernel based Virtual Machine (KVM)
+
+KVM is a virtualization technology that enables the Linux kernel to act as a hypervisor, allowing the creation of fully isolated virtual machines (VMs). These VMs operate independently of the host operating system and kernel by emulating various hardware components like CPU, RAM, and network cards. To create KVM VMs, the host CPU must support hardware virtualization extensions.
+
+KVM differs from container-based virtualization (like OpenVZ and LXC) by providing full system virtualization rather than kernel-level virtualization. This means KVM can run a wider range of operating systems (e.g., Linux, BSD, Windows, macOS) but typically allows for fewer VMs per host compared to containers. KVM is essential for running non-Linux operating systems and specialized Linux-based OSs.
+
+WHY KVM? 
+
+- KVM-based virtualization: Leveraging the efficient and high-performance KVM hypervisor, Proxmox VE allows you to create and run virtual machines (VMs) directly on your physical hardware.
+- Web-based management: The user-friendly web interface provides a centralized dashboard for managing all your virtualized environments, including VMs, containers, and storage.
+- Container support: In addition to VMs, Proxmox VE supports LXC (Linux Containers) for running lightweight, isolated applications within a single operating system kernel.
+- Storage management: The platform offers tools for managing various storage types, including local disks, iSCSI, NFS, and Ceph, ensuring efficient data storage and retrieval.
+- High availability: Proxmox VE includes features like clustering and HA (High Availability) to ensure continuous operation and minimize downtime.
+- API integration: The platform provides a RESTful API, allowing for automation and integration with other systems.
 
 
-## 1.2. IP and Firewall Settings
+Creating a KVM in Proxmox:
 
-
-
-
-
-
+From scratch using an ISO image
+From a template
+Using network PXE boot
 
 
 
@@ -214,7 +225,7 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
  ## Check connections 
 ```
 
- <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/Fedora VM connect.jpg" alt="gui" width="400" />
+ <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/Fedora VM connect.jpg" alt="gui" width="400" />
 
 
 
@@ -322,16 +333,7 @@ Install Next Cloud Container:
 - AIX: A proprietary operating system developed by IBM for its Power Systems hardware.
 - HP-UX: A proprietary operating system developed by HP for its Itanium-based servers.
 
-### 1.2. Virtualization Platform
 
-Proxmox VE is a free, open-source virtualization platform for Linux. It uses KVM, a powerful hypervisor, and offers a web-based management interface. You can create VMs and containers, manage storage, and ensure high availability.
-
-- KVM-based virtualization: Leveraging the efficient and high-performance KVM hypervisor, Proxmox VE allows you to create and run virtual machines (VMs) directly on your physical hardware.
-- Web-based management: The user-friendly web interface provides a centralized dashboard for managing all your virtualized environments, including VMs, containers, and storage.
-- Container support: In addition to VMs, Proxmox VE supports LXC (Linux Containers) for running lightweight, isolated applications within a single operating system kernel.
-- Storage management: The platform offers tools for managing various storage types, including local disks, iSCSI, NFS, and Ceph, ensuring efficient data storage and retrieval.
-- High availability: Proxmox VE includes features like clustering and HA (High Availability) to ensure continuous operation and minimize downtime.
-- API integration: The platform provides a RESTful API, allowing for automation and integration with other systems.
 
 #### 1.2.1 Software and Services
 
