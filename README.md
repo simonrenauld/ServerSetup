@@ -69,7 +69,7 @@ Proxmox VE supports various storage types:
 
 This wide range of storage options provides flexibility in managing data within your virtual environment.
 
-### 1.3. Installing Proxmox
+### 2. Installing Proxmox
 
 You will find many documentation around the web. IS NOT that straight forward.I will not give more details explainations step by step. Because its constantly updating and 
 there is different ways to set-up your proxmox. Do you own research and find the best approach. 
@@ -83,7 +83,7 @@ https://github.com/ariadata/proxmox-hetzner?tab=readme-ov-file
 
 
 
-### 1.4. QEMU commands
+### 2.1. QEMU commands
 
 QEMU is a type-2 hypervisor that uses dynamic translation to emulate CPU instructions on a foreign architecture. It’s helpful for many tasks, such as testing and development, cloud computing, and system administration. 
 In conjunction with other virtualization technologies like KVM or Xen, it allows the guest to run directly on the host CPU at near-native speed.
@@ -134,7 +134,7 @@ RAID: RAID is a technology that uses multiple hard drives to increase redundancy
 https://136.243.155.166:8006/
 
 
-### 1.5. Getting started with Proxmox GUI 
+### 2.2. Getting started with Proxmox GUI 
 to access: https://your.ip.1111.166:8006/ 
 
 
@@ -145,7 +145,7 @@ to access: https://your.ip.1111.166:8006/
 
 
 
-## 1.1. Kernel based Virtual Machine (KVM)
+## 2.3. Kernel based Virtual Machine (KVM)
 
 KVM is a virtualization technology that enables the Linux kernel to act as a hypervisor, allowing the creation of fully isolated virtual machines (VMs). These VMs operate independently of the host operating system and kernel by emulating various hardware components like CPU, RAM, and network cards. To create KVM VMs, the host CPU must support hardware virtualization extensions.
 
@@ -169,7 +169,7 @@ Using network PXE boot
 
 
 
-### 1.2.1 Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
+### 2.3.1 Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
 <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="400" />
 
