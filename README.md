@@ -169,7 +169,7 @@ Using network PXE boot
 
 
 
-### 2.3.1 Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
+### 2.3.1. Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
 <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="400" />
 
@@ -239,6 +239,18 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 
 
+### 2.3.2. RDP Connect to Linux/Ubuntu Proxmox VM 
+
+Sources: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
+
+
+```
+sudo apt update
+
+
+sudo apt install xfce4 xfce4-goodies -y
+
+###  Installing xrdp on Ubuntu
 
 
 
@@ -247,12 +259,7 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 
 
-
-
-
-
-
-
+```
 
 
 ### INSTALLLING UBUNTU VIRTUAL MACHINE ON PROXMOX
