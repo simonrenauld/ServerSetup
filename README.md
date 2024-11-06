@@ -288,11 +288,83 @@ Or
 sudo nextcloud.enable-https self-signed
 Self-Signed Certificate
 sudo ufw allow 80,443/tcp
-
+```
 
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/nextcloudProxmoxUbuntu.jpg" alt="gui" width="400" />
 
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
