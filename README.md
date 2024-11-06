@@ -234,11 +234,21 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 
 
-### 2.3.2. Installling nextcloud : 
+### 2.3.2. Installling nextcloud: 
 
-Advantages
-All the mobile and desktop applications you would expect - Linux (packaged in Fedora,) Windows, Mac, Android, iOS and even F-Droid and Windows Mobile.
-Unlimited free storage space (depends on your hardware)
+Advantages of Nextcloud
+
+Comprehensive Platform: Offers a suite of mobile and desktop applications for various operating systems, including Linux, Windows, Mac, Android, iOS, F-Droid, and even Windows Mobile.
+Scalable Storage: Supports unlimited free storage space, depending on your hardware setup.
+Self-Hosting: Provides the freedom to host your own cloud storage and file-sharing solution, ensuring data privacy and security.
+Open-Source: Built on open-source principles, allowing for customization and community-driven development.
+Rich Feature Set: Offers a wide range of features beyond basic file storage, including:
+Calendar and Contacts
+Real-time Collaboration
+Secure Communication
+Task Management
+Photo and Video Sharing
+Integration Capabilities: Seamlessly integrates with other popular tools and services.
 
 
 ```
