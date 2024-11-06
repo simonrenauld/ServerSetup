@@ -171,7 +171,7 @@ Using network PXE boot
 
 ### 2.3.1. Installing Fedora or Ubuntu VM on Proxmox and Set networking connections
 
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="400" />
+<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmoxgui.jpg" alt="Hetzner Server" width="800" />
 
 
 ```
