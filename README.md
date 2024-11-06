@@ -289,6 +289,7 @@ sudo ufw allow 80,443/tcp
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/nextcloudProxmoxUbuntu.jpg" alt="gui" width="400" />
 
 
+```
 
 
 
@@ -379,8 +380,7 @@ sudo ufw allow 80,443/tcp
 
 
 
-
-
+```
 
 
 
