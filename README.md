@@ -293,6 +293,74 @@ sudo ufw allow 80,443/tcp
 
 
 
+Yes, there are free alternatives to setting up DNS and reverse proxy with SSL. Here's a guide on how to achieve a similar setup without incurring costs:
+
+1. Free Domain and DNS Service with Cloudflare
+Cloudflare offers free DNS hosting and SSL/TLS certificates for domains. You can use it even if you don’t want to pay for a domain name by using free domain providers like Freenom.
+
+Step 1.1: Get a Free Domain with Freenom (Optional)
+Visit Freenom and sign up for a free domain (they offer domains like .tk, .ml, .ga, .cf, and .gq).
+Register a domain (e.g., nextcloud.tk).
+Step 1.2: Set Up Cloudflare for Free DNS Management and SSL
+Create a Cloudflare Account:
+
+Sign up for a free account at Cloudflare.
+Add Your Domain to Cloudflare:
+
+Go to the Add a Site section in Cloudflare, enter your domain (e.g., nextcloud.tk), and select the free plan.
+Cloudflare will show you nameservers to replace at your domain registrar (such as Freenom). Update your domain’s nameservers with the ones provided by Cloudflare.
+Create an A Record for Your Domain/Subdomain:
+
+Once your domain is added to Cloudflare, create an A record pointing your subdomain (e.g., nextcloud.yourdomain.tk) to your Hetzner server's IP (e.g., 136.243.155.166).
+Cloudflare should propagate the DNS within minutes, allowing external access to your server.
+Enable SSL in Cloudflare:
+
+Go to SSL/TLS settings in Cloudflare and select Flexible SSL mode (or Full if you've set up SSL on your server).
+Cloudflare will issue a free SSL certificate that will secure connections between users and Cloudflare’s servers.
+2. Use a Free Reverse Proxy with Caddy
+Caddy is a free, open-source web server with automatic HTTPS. It’s easier to set up than Nginx for SSL certificates, as it handles the whole process automatically with Let’s Encrypt.
+
+Step 2.1: Install Caddy
+You can install Caddy directly on a VM in your Proxmox setup or on the same machine hosting Nextcloud (if resources permit). Here’s how:
+
+Download and Install Caddy:
+Run the following commands to install Caddy on Ubuntu:
+bash
+Copy code
+sudo apt update
+sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | sudo gpg --dearmor -o /usr/share/keyrings/caddy-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+sudo apt update
+sudo apt install caddy
+Step 2.2: Configure Caddy as a Reverse Proxy for Nextcloud
+Create a Caddyfile:
+
+Open or create a configuration file at /etc/caddy/Caddyfile:
+bash
+Copy code
+sudo nano /etc/caddy/Caddyfile
+Add Reverse Proxy Configuration:
+
+Replace nextcloud.yourdomain.tk with your domain or subdomain and the internal IP with your Nextcloud server’s local IP.
+Add the following configuration:
+caddyfile
+Copy code
+nextcloud.yourdomain.tk {
+    reverse_proxy 10.107.58.138
+}
+Save and Restart Caddy:
+
+Save the file, and then restart Caddy to apply the changes:
+bash
+Copy code
+sudo systemctl restart caddy
+Caddy will automatically fetch and renew SSL certificates from Let’s Encrypt, which is completely free.
+
+Summary of This Free Setup
+Cloudflare for free DNS management and SSL/TLS certificates.
+Caddy as a reverse proxy server that automatically manages SSL certificates with Let’s Encrypt.
+With this setup, you’ll have a secure, external access to your Nextcloud instance using a free domain, free DNS, and free SSL certificates. Let me know if you need more guidance!
 
 
 
