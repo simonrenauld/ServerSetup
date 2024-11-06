@@ -238,27 +238,24 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 Advantages of Nextcloud
 
-Comprehensive Platform: Offers a suite of mobile and desktop applications for various operating systems, including Linux, Windows, Mac, Android, iOS, F-Droid, and even Windows Mobile.
-Scalable Storage: Supports unlimited free storage space, depending on your hardware setup.
-Self-Hosting: Provides the freedom to host your own cloud storage and file-sharing solution, ensuring data privacy and security.
-Open-Source: Built on open-source principles, allowing for customization and community-driven development.
-Rich Feature Set: Offers a wide range of features beyond basic file storage, including:
-Calendar and Contacts
-Real-time Collaboration
-Secure Communication
-Task Management
-Photo and Video Sharing
-Integration Capabilities: Seamlessly integrates with other popular tools and services.
+- Comprehensive Platform: Offers a suite of mobile and desktop applications for various operating systems, including Linux, Windows, Mac, Android, iOS, F-Droid, and even Windows Mobile.
+- Scalable Storage: Supports unlimited free storage space, depending on your hardware setup.
+- Self-Hosting: Provides the freedom to host your own cloud storage and file-sharing solution, ensuring data privacy and security.
+- Open-Source: Built on open-source principles, allowing for customization and community-driven development.
+- Rich Feature Set: Offers a wide range of features beyond basic file storage, including:Calendar and Contacts, Real-time Collaboration, Secure Communication, Task Management, Photo and Video Sharing
+- Integration Capabilities: Seamlessly integrates with other popular tools and services.
 
-
+### Install 
 ```
 sudo snap install nextcloud
 
 snap changes nextcloud
 
 snap info nextcloud
+```
 
-
+### Connections
+```
 snap connections nextcloud
 
 Output
@@ -266,8 +263,8 @@ Interface        Plug                       Slot           Notes
 network          nextcloud:network          :network       -
 network-bind     nextcloud:network-bind     :network-bind  -
 removable-media  nextcloud:removable-media  -              -
-
-
+```
+```
 ## Snap services
 cat /snap/nextcloud/current/meta/snap.yaml 
 
