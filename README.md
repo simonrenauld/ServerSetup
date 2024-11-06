@@ -234,7 +234,7 @@ subnet 192.222.222.0 netmask 111.111.111.0 {
 
 
 
-### 2.3.2. Installling nextcloud: 
+### 2.4. Installling nextcloud: 
 
 Advantages of Nextcloud
 
