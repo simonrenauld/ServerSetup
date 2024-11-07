@@ -364,11 +364,17 @@ With this setup, you’ll have a secure, external access to your Nextcloud insta
 ```
 
 
-### 2.4. nable Remote Desktop Protocol Using xrdp on Ubuntu 22.0
+### 2.4. Install Xrdp Server for Windows Remote Desktop feature
 
+For Ubuntu: 
 Source: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
 
-Install the xfce and xfce-goodies packages on your servee
+For Fedora:
+dnf -y install xrdp tigervnc-server
+systemctl enable --now xrdp
+
+
+
 ```
 sudo apt update
 sudo apt install xfce4 xfce4-goodies -y
