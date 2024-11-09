@@ -38,6 +38,10 @@ Many businesses start by managing data in Excel files, and as they grow, they tr
 
 There's also a tendency for different departments to focus only on the most successful aspects of the company, creating a bias in how growth is perceived. This is where virtualization and tools like Proxmox come into play, enabling us to build a perfect testing lab that preserves both success and failure, allowing for deeper insights and innovation.
 
+
+
+
+
 ### 1.3. Virtualization and Proxmox VE
 
 Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). 
@@ -68,6 +72,19 @@ Proxmox VE supports various storage types:
 - **ZFS**
 
 This wide range of storage options provides flexibility in managing data within your virtual environment.
+
+
+
+#### 1.3.1. Virtualization and Proxmox VE
+
+The Draw.io Integration extension for Visual Studio Code brings the full functionality of Draw.io diagramming directly into your code editor. Ideal for creating flowcharts, network diagrams, or UML models, this extension lets you diagram without switching between applications. You can save diagrams as .drawio.png or .drawio.svg, preserving editable data within the image's metadata for easy sharing and future editing. With offline support, Git repository integration, and seamless Markdown embedding, this extension enhances team collaboration and workflow visualization, making it a powerful addition to any developer's toolkit.
+
+![Proxmox Architecture] <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/proxmox_architecture.jpg" alt="Hetzner Server" width="400" />
+
+
+
+
+
 
 ### 2. Installing Proxmox
 
