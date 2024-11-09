@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram name="Proxmox Virtual Environment Diagram" id="0">
-        <mxGraphModel dx="2326" dy="2170" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="2147" dy="2170" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,7 +10,7 @@
                 <mxCell id="17" value="" style="edgeStyle=none;html=1;fontSize=16;" parent="1" source="proxmoxLogo" target="2" edge="1">
                     <mxGeometry relative="1" as="geometry"/>
                 </mxCell>
-                <mxCell id="proxmoxLogo" value="                           Hypervisor - Virtiualization Environment" style="shape=mxgraph.mockups.misc.screenshot;fillColor=#FFFFFF;strokeColor=#FF6600;fontColor=#000000;fontSize=20;align=left;verticalAlign=top;fontStyle=1;strokeWidth=3;" parent="1" vertex="1">
+                <mxCell id="proxmoxLogo" value="                           Hypervisor - Virtualization Environment" style="shape=mxgraph.mockups.misc.screenshot;fillColor=#FFFFFF;strokeColor=#FF6600;fontColor=#000000;fontSize=20;align=left;verticalAlign=top;fontStyle=1;strokeWidth=3;" parent="1" vertex="1">
                     <mxGeometry x="-155" y="-5" width="950" height="620" as="geometry"/>
                 </mxCell>
                 <mxCell id="userTools" value="&lt;font style=&quot;font-size: 16px;&quot;&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00617e;" parent="1" vertex="1">

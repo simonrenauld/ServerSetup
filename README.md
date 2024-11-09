@@ -75,7 +75,7 @@ This wide range of storage options provides flexibility in managing data within 
 
 
 
-### 1.3.1. Virtualization and Proxmox VE
+### 1.3.1. Draw.io Server Infrastructure
 
 The Draw.io Integration extension for Visual Studio Code brings the full functionality of Draw.io diagramming directly into your code editor. Ideal for creating flowcharts, network diagrams, or UML models, this extension lets you diagram without switching between applications. You can save diagrams as .drawio.png or .drawio.svg, preserving editable data within the image's metadata for easy sharing and future editing. With offline support, Git repository integration, and seamless Markdown embedding, this extension enhances team collaboration and workflow visualization, making it a powerful addition to any developer's toolkit.
 
