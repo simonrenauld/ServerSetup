@@ -306,7 +306,325 @@ sudo ufw allow 80,443/tcp
  <img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/nextcloudProxmoxUbuntu.jpg" alt="gui" width="400" />
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ```
+
+### 2.5. SSH into Proxmox and connect to your Fedora virtual machine via command line.
+```
+why: SSH and why fedora ............
+
+
+# connect ssh command lines as root or admin user to your proxmox server. 
+
+ssh -p 5555 root@yourproxmoxip 
+
+List your virtual machines to ensure VM 104 is running:
+
+root@proxmox-example:~# qm list
+      VMID NAME                 STATUS     MEM(MB)    BOOTDISK(GB) PID
+       100 ubuntu-vm            stopped    4048              32.00 0
+       101 ubuntu-vm-22         stopped    10000            100.00 0
+       102 ubuntu-Desktop-24    stopped    8192              40.00 0
+       103 fedora               stopped    2048              32.00 0
+       104 fedora40             running    8192              32.00 606015
+
+Find the IP Address:
+Once VM 104 is running, you can find its IP address using the following command:
+
+sh
+qm monitor 
+
+You can find the IP address of VM 104 by using the following methods instead:
+
+Using Proxmox Shell:
+
+Access the Proxmox host shell and use the following command to view the IP address of the network interface:
+ip a show tap104i0
+
+```
+root@proxmox-example:~# sudo apt update && sudo apt install openssh-server -y
+
+dnf update -y
+dnf install -y openssh-server
+systemctl start sshd
+systemctl enable sshd
+firewall-cmd --permanent --add-service=ssh
+firewall-cmd --reload
+
+sudo nano /etc/ssh/sshd_config
+
+enable temporary PasswordAuthentication yes
+
+#### Next cloud on Fedora (there is many different ways to host and install Nextcloud)
+
+## Update the System and Install LAMP Stack Components: Nextcloud requires a web server, PHP, and a database. We’ll use Apache, MariaDB, and PHP.
+sudo dnf update -y
+sudo dnf install -y httpd mariadb-server php php-mysqlnd php-fpm php-json php-gd php-zip php-curl php-intl php-mbstring php-xml php-ldap php-opcache php-apcu
+
+Start and Enable Apache and MariaDB:
+
+sudo systemctl start httpd
+sudo systemctl enable httpd
+sudo systemctl start mariadb
+sudo systemctl enable mariadb
+
+
+
+you might get this errors : 
+
+simonadmin@fedora:~$ sudo systemctl status httpd.service
+× httpd.service - The Apache HTTP Server
+     Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─10-timeout-abort.conf
+             /etc/systemd/system/httpd.service.d
+             └─php-fpm.conf
+     Active: failed (Result: exit-code) since Tue 2024-11-12 12:16:18 EST; 27s ago
+       Docs: man:httpd.service(8)
+   Main PID: 360294 (code=exited, status=1/FAILURE)
+     Status: "Reading configuration..."
+        CPU: 94ms
+
+Nov 12 12:16:18 fedora systemd[1]: Starting httpd.service - The Apache HTTP Server...
+Nov 12 12:16:18 fedora (httpd)[360294]: httpd.service: Referenced but unset environment variable eva>
+Nov 12 12:16:18 fedora httpd[360294]: AH00558: httpd: Could not reliably determine the server's full>
+Nov 12 12:16:18 fedora httpd[360294]: (98)Address already in use: AH00072: make_sock: could not bind>
+Nov 12 12:16:18 fedora httpd[360294]: (98)Address already in use: AH00072: make_sock: could not bind>
+Nov 12 12:16:18 fedora httpd[360294]: no listening sockets available, shutting down
+Nov 12 12:16:18 fedora httpd[360294]: AH00015: Unable to open logs
+Nov 12 12:16:18 fedora systemd[1]: httpd.service: Main process exited, code=exited, status=1/FAILURE
+Nov 12 12:16:18 fedora systemd[1]: httpd.service: Failed with result 'exit-code'.
+Nov 12 12:16:18 fedora systemd[1]: Failed to start httpd.service - The Apache HTTP Server.
+
+In my case my port was already in use buy docker so i changed the port
+
+
+# Mysql Server
+sudo mysql_secure_installation
+
+read carefully for production
+
+NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
+      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
+
+In order to log into MariaDB to secure it, we'll need the current
+password for the root user. If you've just installed MariaDB, and
+haven't set the root password yet, you should just press enter here.
+
+Enter current password for root (enter for none):
+OK, successfully used password, moving on...
+
+Setting the root password or using the unix_socket ensures that nobody
+can log into the MariaDB root user without the proper authorisation.
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Switch to unix_socket authentication [Y/n] Y
+Enabled successfully!
+Reloading privilege tables..
+ ... Success!
+
+
+You already have your root account protected, so you can safely answer 'n'.
+
+Change the root password? [Y/n] n
+ ... skipping.
+
+By default, a MariaDB installation has an anonymous user, allowing anyone
+to log into MariaDB without having to have a user account created for
+them.  This is intended only for testing, and to make the installation
+go a bit smoother.  You should remove them before moving into a
+production environment.
+
+Remove anonymous users? [Y/n] n
+ ... skipping.
+
+Normally, root should only be allowed to connect from 'localhost'.  This
+ensures that someone cannot guess at the root password from the network.
+
+Disallow root login remotely? [Y/n] n
+ ... skipping.
+
+By default, MariaDB comes with a database named 'test' that anyone can
+access.  This is also intended only for testing, and should be removed
+before moving into a production environment.
+
+Remove test database and access to it? [Y/n] Y
+ - Dropping test database...
+ ... Success!
+ - Removing privileges on test database...
+ ... Success!
+
+Reloading the privilege tables will ensure that all changes made so far
+will take effect immediately.
+
+Reload privilege tables now? [Y/n] Y
+ ... Success!
+
+Cleaning up...
+
+All done!  If you've completed all of the above steps, your MariaDB
+installation should now be secure.
+
+Thanks for using MariaDB!
+
+
+## #log into maria DB
+
+sudo mysql -u root -p
+
+CREATE DATABASE nextcloud;
+CREATE USER 'simonadmin'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON nextcloud.* TO 'simonadmin'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+MariaDB [(none)]> EXIT;
+Bye
+
+
+## Download the Latest Nextcloud Release:
+
+cd /var/www
+sudo wget https://download.nextcloud.com/server/releases/nextcloud-26.0.2.zip
+
+sudo dnf install -y unzip
+sudo unzip nextcloud-26.0.2.zip
+
+Set permissions 
+sudo chown -R apache:apache /var/www/nextcloud
+sudo chmod -R 755 /var/www/nextcloud
+
+Configure Apache for Nextcloud
+Create a New Apache Configuration File for Nextcloud:
+
+sudo nano /etc/httpd/conf.d/nextcloud.conf
+
+Copy this configuration file inside: 
+
+Alias /nextcloud "/var/www/nextcloud/"
+
+<Directory /var/www/nextcloud/>
+    Options +FollowSymlinks
+    AllowOverride All
+    
+    <IfModule mod_dav.c>
+        Dav off
+    </IfModule>
+
+    SetEnv HOME /var/www/nextcloud
+    SetEnv HTTP_HOME /var/www/nextcloud
+
+    Require all granted
+</Directory>
+
+
+## restart Apache 
+sudo systemctl restart httpd
+
+
+
+access via your browser: 
+http://youip/nextcloud
+
+I got error compatible with PHP>=8.3.
+You are currently running 8.3.13
+
+Downgrade PHP 8.1:
+sudo dnf remove php*
+sudo dnf module reset php
+sudo dnf module enable php:8.1 -y
+sudo dnf install php php-cli php-fpm php-common php-mysqlnd php-gd php-xml php-mbstring php-curl -y
+sudo systemctl restart httpd
+php -v
+
+
+If the PHP 8.1 packages are not available in the default Fedora repositories, you may need to consider using a third-party repository that provides the required PHP version.
+One option could be to use the Remi repository, which is a popular third-party repository for Fedora that provides various PHP versions. Here's how you can set it up:
+
+downgrading PHP from 8.3 to 8.2. This can happen due to conflicting dependencies. Let's resolve this by explicitly removing PHP 8.3 and then installing PHP 8.2:
+
+Remove PHP 8.3:
+
+sh
+sudo dnf remove php php-cli php-fpm php-gd php-json php-mbstring php-mysqlnd php-opcache php-xml php-pecl-zip
+Reset and Enable PHP 8.2:
+
+sh
+sudo dnf module reset php
+sudo dnf module enable php:remi-8.2
+Install PHP 8.2:
+
+sh
+sudo dnf install php php-cli php-fpm php-gd php-json php-mbstring php-mysqlnd php-opcache php-xml php-zip
+Verify PHP Version:
+
+sh
+php -v
+Restart Apache:
+
+sh
+sudo systemctl restart httpd
+
+## Give access
+simonadmin@fedora:~$ php -v
+PHP 8.2.25 (cli) (built: Oct 22 2024 15:12:03) (NTS gcc x86_64)
+Copyright (c) The PHP Group
+Zend Engine v4.2.25, Copyright (c) Zend Technologies
+    with Zend OPcache v8.2.25, Copyright (c), by Zend Technologies
+simonadmin@fedora:~$ sudo systemctl restart httpd
+simonadmin@fedora:~$ sudo chown -R apache:apache /var/www/nextcloud/config
+simonadmin@fedora:~$ sudo chmod -R 770 /var/www/nextcloud/config
+simonadmin@fedora:~$ ls -l /var/www/nextcloud/config
+ls: cannot open directory '/var/www/nextcloud/config': Permission denied
+simonadmin@fedora:~$ sudo chown -R apache:apache /var/www/nextcloud
+sudo chmod -R 750 /var/www/nextcloud
+simonadmin@fedora:~$ ls -ld /var/www/nextcloud
+ls -l /var/www/nextcloud/config
+drwxr-x---. 1 apache apache 404 May 25  2023 /var/www/nextcloud
+ls: cannot access '/var/www/nextcloud/config': Permission denied
+simonadmin@fedora:~$ sudo chown -R apache:apache /var/www/nextcloud/config
+sudo chmod -R 750 /var/www/nextcloud/config
+simonadmin@fedora:~$ getenforce
+Enforcing
+simonadmin@fedora:~$ sudo ls -l /var/www/nextcloud/config
+total 76
+-rwxr-x---. 1 apache apache     0 May 25  2023 CAN_INSTALL
+-rwxr-x---. 1 apache apache 74851 May 25  2023 config.sample.php
+simonadmin@fedora:~$ sudo setenforce 0
+simonadmin@fedora:~$ sudo chcon -R -t httpd_sys_rw_content_t /var/www/nextcloud
+simonadmin@fedora:~$ sudo systemctl restart httpd
+
 
 
 
