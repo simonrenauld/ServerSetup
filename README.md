@@ -476,8 +476,7 @@ If the PHP 8.1 packages are not available in the default Fedora repositories, co
 sh
 sudo dnf remove php php-cli php-fpm php-gd php-json php-mbstring php-mysqlnd php-opcache php-xml php-pecl-zip
 sudo dnf module reset php
-sudo dnf module enable php:remi
-
+sudo dnf module enable
 
 
 
