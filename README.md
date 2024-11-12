@@ -331,11 +331,12 @@ root@proxmox-example:~# qm list
 
 Find the IP Address
 Once VM 104 is running, you can find its IP address using the following command:
+   ```
 qm monitor 104
-
+   ```
 
 You can find the IP address of VM 104 by using the following methods instead:
-
+   ```
 Using Proxmox Shell:
 ip a show tap104i0
 
@@ -355,7 +356,7 @@ sudo nano /etc/ssh/sshd_config
 
 
 Install and Configure OpenSSH on Fedora
-
+   ```
 sudo apt update && sudo apt install openssh-server -y
 
 sudo dnf update -y
@@ -367,13 +368,13 @@ sudo firewall-cmd --reload
 Edit SSH configuration:
 sudo nano /etc/ssh/sshd_config
 Enable temporary PasswordAuthentication yes or use key
-
+   ```
 Nextcloud on Fedora
 There are many different ways to host and install Nextcloud. Below is one method using the LAMP stack.
 
 Update the System and Install LAMP Stack Components
 Nextcloud requires a web server, PHP, and a database. We’ll use Apache, MariaDB, and PHP.
-
+   ```
 sudo dnf update -y
 sudo dnf install -y httpd mariadb-server php php-mysqlnd php-fpm php-json php-gd php-zip php-curl php-intl php-mbstring php-xml php-ldap php-opcache php-apcu
 
@@ -383,11 +384,11 @@ sudo systemctl start httpd
 sudo systemctl enable httpd
 sudo systemctl start mariadb
 sudo systemctl enable mariadb
-
+   ```
 Troubleshooting Apache
 If you encounter errors, such as:
 
-
+   ```
 simonadmin@fedora:~$ sudo systemctl status httpd.service
 × httpd.service - The Apache HTTP Server
      Loaded: loaded (/usr/lib/systemd/system/httpd.service; enabled; preset: disabled)
@@ -427,19 +428,19 @@ sudo unzip nextcloud-26.0.2.zip
 
 sudo chown -R apache:apache /var/www/nextcloud
 sudo chmod -R 755 /var/www/nextcloud
-
+   ```
 
 
 Configure Apache for Nextcloud
 Create a new Apache configuration file for Nextcloud:
-
+   ```
 sudo nano /etc/httpd/conf.d/nextcloud.conf
-
+   ```
 Copy this configuration file inside:
 
 
 Alias /nextcloud "/var/www/nextcloud/"
-
+   ```
 <Directory /var/www/nextcloud/>
     Options +FollowSymlinks
     AllowOverride All
@@ -454,17 +455,17 @@ Alias /nextcloud "/var/www/nextcloud/"
     Require all granted
 </Directory>
 
-
-
-
+   ```
+ 
 sudo systemctl restart
 
-
 http://yourip/nextcloud
+  ```
+
 
 If you encounter the error "compatible with PHP>=8.3. You are currently running 8.3.13", downgrade to PHP 8.1:
 
-sh
+  ```
 sudo dnf remove php*
 sudo dnf module reset php
 sudo dnf module enable php:8.1 -y
@@ -477,8 +478,7 @@ sh
 sudo dnf remove php php-cli php-fpm php-gd php-json php-mbstring php-mysqlnd php-opcache php-xml php-pecl-zip
 sudo dnf module reset php
 sudo dnf module enable
-
-
+  ```
 
 
 '''
