@@ -340,6 +340,10 @@ You can find the IP address of VM 104 by using the following methods instead:
 Using Proxmox Shell:
 ip a show tap104i0
 
+inside proxmox connect to the ip of any virtual machine via command lines
+root@proxmox-example:~# ssh simonadmin@ipvirtualmachine
+
+
 Install and Configure OpenSSH on Fedora
 
 sudo apt update && sudo apt install openssh-server -y
