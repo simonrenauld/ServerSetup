@@ -485,6 +485,67 @@ sudo dnf module enable
   ```
 
 
+### 2.4.2. set up Dynamic DNS (DDNS) and port forwarding for your Nextcloud server
+
+
+Choose a DDNS provider (such as No-IP or Dynu) and follow these instructions to set up DDNS.
+
+Sign Up for a DDNS Provider:
+
+Create an account on a DDNS provider like No-IP or Dynu.
+Choose a free or paid plan as needed.
+Create a Hostname:
+
+Once you’re logged in, create a hostname (e.g., yourdomain.ddns.net) that will point to your server's IP address.
+Install DDNS Client on Hetzner Server:
+
+Install the DDNS client (e.g., ddclient) on your Hetzner server to keep the hostname updated with your server’s IP address.
+  ```
+
+sudo apt update
+sudo apt install ddclient
+Configure the DDNS Client:
+  ```
+During installation, you’ll be prompted to enter your DDNS provider details.
+If prompted, choose to configure it automatically. If not, configure it manually by editing the /etc/ddclient.conf file:
+  ```
+sudo nano /etc/ddclient.conf
+Add your DDNS credentials and hostname (adjust these details based on your DDNS provider):
+plaintext
+Copy code
+protocol=dyndns2
+use=web, web=dynamicdns.park-your-domain.com/getip
+server=dyndns.your-provider.com
+login=your-ddns-username
+password=your-ddns-password
+yourdomain.ddns.net
+
+  ```
+Save and close the file, then restart the ddclient service:
+  ```
+sudo systemctl restart ddclient
+sudo systemctl enable ddclient
+  ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 '''
 
 
