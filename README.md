@@ -565,7 +565,7 @@ sudo apt update
 sudo apt install xfce4 xfce4-goodies -y
 sudo apt install xrdp -y
 
-# verify Status
+verify Status
 sudo systemctl status xrdp
 if not running
 sudo systemctl start xrdp
