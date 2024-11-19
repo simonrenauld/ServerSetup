@@ -546,11 +546,11 @@ verify Status
 sudo systemctl status xrdp
 if not running
 sudo systemctl start xrdp
-```
-```
+
+
 Configuring xrdp and Updating Your Firewall
 sudo nano /etc/xrdp/xrdp.ini
-```
+
 
 
 ## 3.Self-Hosting LLMs with Ollama: A Complete Guide - Part -1 
