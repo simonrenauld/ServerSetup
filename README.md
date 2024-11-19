@@ -623,11 +623,6 @@ Configure NVIDIA GPU for containerized workloads:
 This hardware configuration and guide provide the tools you need to host LLMs on your infrastructure, empowering advanced development workflows without relying on external providers.
 ```
 
-This structure should make it easier to follow the steps sequentially. If you need further adjustments, let me know! 😊
-
-Feel free to tweak any part of this markdown as needed for your GitHub README! 😊
-
-
 
 
 
