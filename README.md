@@ -555,7 +555,7 @@ sudo nano /etc/xrdp/xrdp.ini
 
 Here’s the reviewed and corrected Markdown, with some refinements for clarity, accuracy, and compatibility across systems:
 
-```markdown
+
 ## 3. Self-Hosting LLMs with Ollama: A Complete Guide - Part 1
 
 **Hardware:** Intel Core i7-6700 | Hetzner Server | Proxmox
