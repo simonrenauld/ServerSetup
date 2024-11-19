@@ -527,28 +527,7 @@ sudo systemctl enable ddclient
   ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-
-
-### 2.4. Install Xrdp Server for Windows Remote Desktop feature
+### 2.4.3. Install Xrdp Server for Windows Remote Desktop feature
 
 For Ubuntu: 
 Source: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
@@ -556,7 +535,6 @@ Source: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-de
 For Fedora:
 dnf -y install xrdp tigervnc-server
 systemctl enable --now xrdp
-
 
 
 ```
