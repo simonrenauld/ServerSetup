@@ -531,13 +531,13 @@ sudo systemctl enable ddclient
 
 For Ubuntu: 
 Source: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
-
+```
 For Fedora:
 dnf -y install xrdp tigervnc-server
 systemctl enable --now xrdp
 
 
-```
+
 sudo apt update
 sudo apt install xfce4 xfce4-goodies -y
 sudo apt install xrdp -y
@@ -546,11 +546,10 @@ verify Status
 sudo systemctl status xrdp
 if not running
 sudo systemctl start xrdp
-
-
+```
+```
 Configuring xrdp and Updating Your Firewall
 sudo nano /etc/xrdp/xrdp.ini
-
 ```
 
 
