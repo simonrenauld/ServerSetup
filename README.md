@@ -575,7 +575,84 @@ sudo nano /etc/xrdp/xrdp.ini
 
 ```
 
+# Self-Hosting LLMs with Ollama: 
 
+Sure, here is your content formatted in markdown for a GitHub README:
+
+```markdown
+# Self-Hosting LLMs with Ollama: A Complete Guide
+
+**Hardware:** Intel Core i7-6700 | PLUSNIC 1 Gbit | Intel I219-LM | 2x SSD M.2 NVMe (512 GB) | 4x RAM (16 GB DDR4)
+
+**Date:** January 12, 2024 | **Author:** Avnish
+
+Ollama offers a powerful solution for self-hosting Large Language Models (LLMs) directly on your infrastructure, enabling seamless integration with development environments like Neovim and VSCode. With Ollama, you can manage LLMs using containerized environments and interact with them through command-line tools, web UIs, or directly from your code editor.
+
+## Overview
+- **Prompt LLMs:** Directly from your code editor using Ollama integrations.
+- **Core Commands:** `pull` (download LLMs), `run` (execute LLMs).
+- **Custom Models:** Create Modelfiles (similar to Dockerfiles) to build tailored LLMs with parameters for fine-tuning and prompt templates.
+
+## Key Steps
+### 1. Deploying Ollama with NVIDIA GPU
+While CPU-based deployments are possible, using a GPU significantly boosts LLM inference performance. This guide assumes an NVIDIA GPU (e.g., RTX 3070 Ti). For AMD/Intel GPUs, consult their specific documentation.
+
+### 2. GPU Passthrough in Proxmox
+To enable GPU passthrough for a virtual machine (VM):
+1. Open Proxmox's Web UI > VM Hardware > Add PCI Device (your GPU).
+2. Check "All Functions" before saving.
+3. Reboot the VM and verify passthrough:
+   ```bash
+   lspci | grep NVIDIA
+   ```
+   Example output:
+   ```bash
+   06:10.0 VGA compatible controller: NVIDIA Corporation GA104 [GeForce RTX 3070 Ti] (rev a1)  
+   06:10.1 Audio device: NVIDIA Corporation GA104 High Definition Audio Controller (rev a1)
+   ```
+
+### 3. CUDA Toolkit Installation
+Install CUDA Toolkit for GPU computation:
+1. Download the CUDA repository:
+   ```bash
+   wget https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/cuda-repo-fedora37-12-3-local-12.3.2_545.23.08-1.x86_64.rpm
+   ```
+2. Install and clean metadata:
+   ```bash
+   sudo rpm -i cuda-repo-fedora37-12-3-local-12.3.2_545.23.08-1.x86_64.rpm
+   sudo dnf clean all
+   ```
+3. Install CUDA and NVIDIA drivers:
+   ```bash
+   sudo dnf -y install cuda-toolkit-12-3
+   sudo dnf -y module install nvidia-driver:latest-dkms
+   ```
+
+### 4. NVIDIA Container Toolkit Installation
+Configure NVIDIA GPU for containerized workloads:
+1. Add the NVIDIA Container Toolkit repository:
+   ```bash
+   curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
+   ```
+2. Install the toolkit:
+   ```bash
+   sudo dnf install -y nvidia-container-toolkit
+   ```
+3. Configure runtime for Docker:
+   ```bash
+   sudo nvidia-ctk runtime configure --runtime=docker
+   sudo systemctl restart docker
+   ```
+
+## Ollama Features
+- **Command-Line Interaction:** Use `pull` and `run` for model management.
+- **Web UI Management:** Easily manage LLMs and customize prompts through a browser interface.
+- **Editor Integrations:** Leverage plugins for Neovim and VSCode for in-editor LLM interactions.
+
+This hardware configuration and guide provide the tools you need to host LLMs on your infrastructure, empowering advanced development workflows without relying on external providers.
+```
+
+Feel free to tweak any part of this markdown as needed for your GitHub README! 😊
 
 
 
