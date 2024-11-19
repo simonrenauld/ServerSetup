@@ -575,16 +575,10 @@ sudo nano /etc/xrdp/xrdp.ini
 
 ```
 
-# Self-Hosting LLMs with Ollama: 
 
-Sure, here is your content formatted in markdown for a GitHub README:
+# Self-Hosting LLMs with Ollama: A Complete Guide - Part -1 
 
-```markdown
-# Self-Hosting LLMs with Ollama: A Complete Guide
-
-**Hardware:** Intel Core i7-6700 | PLUSNIC 1 Gbit | Intel I219-LM | 2x SSD M.2 NVMe (512 GB) | 4x RAM (16 GB DDR4)
-
-**Date:** January 12, 2024 | **Author:** Avnish
+**Hardware:** Intel Core i7-6700 | Hetzner Server | Proxmox
 
 Ollama offers a powerful solution for self-hosting Large Language Models (LLMs) directly on your infrastructure, enabling seamless integration with development environments like Neovim and VSCode. With Ollama, you can manage LLMs using containerized environments and interact with them through command-line tools, web UIs, or directly from your code editor.
 
@@ -594,10 +588,10 @@ Ollama offers a powerful solution for self-hosting Large Language Models (LLMs) 
 - **Custom Models:** Create Modelfiles (similar to Dockerfiles) to build tailored LLMs with parameters for fine-tuning and prompt templates.
 
 ## Key Steps
-### 1. Deploying Ollama with NVIDIA GPU
+### 3. Deploying Ollama with NVIDIA GPU
 While CPU-based deployments are possible, using a GPU significantly boosts LLM inference performance. This guide assumes an NVIDIA GPU (e.g., RTX 3070 Ti). For AMD/Intel GPUs, consult their specific documentation.
 
-### 2. GPU Passthrough in Proxmox
+#### 3.1 GPU Passthrough in Proxmox
 To enable GPU passthrough for a virtual machine (VM):
 1. Open Proxmox's Web UI > VM Hardware > Add PCI Device (your GPU).
 2. Check "All Functions" before saving.
@@ -611,7 +605,7 @@ To enable GPU passthrough for a virtual machine (VM):
    06:10.1 Audio device: NVIDIA Corporation GA104 High Definition Audio Controller (rev a1)
    ```
 
-### 3. CUDA Toolkit Installation
+#### 3.2 CUDA Toolkit Installation
 Install CUDA Toolkit for GPU computation:
 1. Download the CUDA repository:
    ```bash
@@ -628,7 +622,7 @@ Install CUDA Toolkit for GPU computation:
    sudo dnf -y module install nvidia-driver:latest-dkms
    ```
 
-### 4. NVIDIA Container Toolkit Installation
+#### 3.3 NVIDIA Container Toolkit Installation
 Configure NVIDIA GPU for containerized workloads:
 1. Add the NVIDIA Container Toolkit repository:
    ```bash
@@ -651,6 +645,8 @@ Configure NVIDIA GPU for containerized workloads:
 
 This hardware configuration and guide provide the tools you need to host LLMs on your infrastructure, empowering advanced development workflows without relying on external providers.
 ```
+
+This structure should make it easier to follow the steps sequentially. If you need further adjustments, let me know! 😊
 
 Feel free to tweak any part of this markdown as needed for your GitHub README! 😊
 
