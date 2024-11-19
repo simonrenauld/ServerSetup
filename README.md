@@ -553,7 +553,7 @@ sudo nano /etc/xrdp/xrdp.ini
 ```
 
 
-# 3.Self-Hosting LLMs with Ollama: A Complete Guide - Part -1 
+## 3.Self-Hosting LLMs with Ollama: A Complete Guide - Part -1 
 
 **Hardware:** Intel Core i7-6700 | Hetzner Server | Proxmox
 
