@@ -560,6 +560,9 @@ Here’s the reviewed and corrected Markdown, with some refinements for clarity,
 
 **Hardware:** Intel Core i7-6700 | Hetzner Server | Proxmox
 
+2. Install Dependencies
+Install required packages for building and running LLaM,sudo dnf install git gcc g++ make cmake python3 python3-pip
+
 Ollama offers a powerful solution for self-hosting Large Language Models (LLMs) directly on your infrastructure, enabling seamless integration with development environments like Neovim and VSCode. With Ollama, you can manage LLMs using containerized environments and interact with them through command-line tools, web UIs, or directly from your code editor.
 
 ## Overview
@@ -587,6 +590,10 @@ To enable GPU passthrough for a virtual machine (VM):
    06:10.0 VGA compatible controller: NVIDIA Corporation GA104 [GeForce RTX 3070 Ti] (rev a1)  
    06:10.1 Audio device: NVIDIA Corporation GA104 High Definition Audio Controller (rev a1)
    ```
+
+   2. Install Dependencies
+Install required packages for building and running LLaMA:
+   
 
 #### 3.2 CUDA Toolkit Installation
 To install the CUDA Toolkit for GPU computation:
