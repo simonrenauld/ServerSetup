@@ -556,116 +556,142 @@ sudo nano /etc/xrdp/xrdp.ini
 Here’s the reviewed and corrected Markdown, with some refinements for clarity, accuracy, and compatibility across systems:
 
 
-## 3. Self-Hosting LLMs with Ollama  QEMU/KVM Fedora- Part 1 (In review)
+markdown
+# Let's set up llama.cpp on your Fedora VM:
 
-**Hardware:** Intel Core i7-6700 | Hetzner Server | Proxmox
+## 3. Install required dependencies
 
-2. Install Dependencies
-Install required packages for building and running LLaM,sudo dnf install git gcc g++ make cmake python3 python3-pip
+### 3.1. First, install required dependencies:
 
-Ollama offers a powerful solution for self-hosting Large Language Models (LLMs) directly on your infrastructure, enabling seamless integration with development environments like Neovim and VSCode. With Ollama, you can manage LLMs using containerized environments and interact with them through command-line tools, web UIs, or directly from your code editor.
+**Bash:**
 
-## Overview
-- **Prompt LLMs:** Interact directly with models from your code editor using Ollama integrations.
-- **Core Commands:** 
-  - `pull`: Download pre-trained LLMs.
-  - `run`: Execute and interact with LLMs.
-- **Custom Models:** Use Modelfiles (similar to Dockerfiles) to create tailored LLMs with fine-tuned parameters and custom prompt templates.
+```bash
+sudo dnf groupinstall "Development Tools"
+sudo dnf install cmake wget git
+3.2. Clone and build llama.cpp:
+Bash:
 
-## Key Steps
-### 3. Deploying Ollama with NVIDIA GPU
-While CPU-based deployments are feasible, using a GPU significantly enhances LLM inference performance. This guide assumes you are using an NVIDIA GPU (e.g., RTX 3070 Ti). For AMD/Intel GPUs, refer to their specific documentation.
+bash
+git clone https://github.com/ggerganov/llama.cpp.git
+cd llama.cpp
+mkdir build
+cd build
+cmake .. -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS
+make -j4
+3.3. Download a compatible Llama model
+Bash:
 
-#### 3.1 GPU Passthrough in Proxmox
-To enable GPU passthrough for a virtual machine (VM):
-1. Open Proxmox's Web UI:  
-   Navigate to **VM Hardware > Add PCI Device** and select your GPU.
-2. Check **All Functions** before saving.
-3. Reboot the VM and verify GPU passthrough:
-   ```bash
-   lspci | grep NVIDIA
-   ```
-   Example output:
-   ```bash
-   06:10.0 VGA compatible controller: NVIDIA Corporation GA104 [GeForce RTX 3070 Ti] (rev a1)  
-   06:10.1 Audio device: NVIDIA Corporation GA104 High Definition Audio Controller (rev a1)
-   ```
+bash
+# Create models directory
+mkdir -p models
+cd models
 
-   2. Install Dependencies
-Install required packages for building and running LLaMA:
-   
+# Download TinyLlama
+wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
+3.4. Run the model:
+Bash:
 
-#### 3.2 CUDA Toolkit Installation
-To install the CUDA Toolkit for GPU computation:
-1. Download the CUDA repository:
-   ```bash
-   wget https://developer.download.nvidia.com/compute/cuda/12.3.2/local_installers/cuda-repo-fedora37-12-3-local-12.3.2_545.23.08-1.x86_64.rpm
-   ```
-2. Install the repository and clean up:
-   ```bash
-   sudo rpm -i cuda-repo-fedora37-12-3-local-12.3.2_545.23.08-1.x86_64.rpm
-   sudo dnf clean all
-   ```
-3. Install the CUDA Toolkit and NVIDIA drivers:
-   ```bash
-   sudo dnf -y install cuda-toolkit-12-3
-   sudo dnf -y module install nvidia-driver:latest-dkms
-   ```
+bash
+cd ..
+./main -m models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
 
-#### 3.3 NVIDIA Container Toolkit Installation
-To configure NVIDIA GPU support for containerized workloads:
-1. Add the NVIDIA Container Toolkit repository:
-   ```bash
-   curl -s -L https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo | sudo tee /etc/yum.repos.d/nvidia-container-toolkit.repo
-   ```
-2. Install the NVIDIA Container Toolkit:
-   ```bash
-   sudo dnf install -y nvidia-container-toolkit
-   ```
-3. Configure the Docker runtime:
-   ```bash
-   sudo nvidia-ctk runtime configure --runtime=docker
-   sudo systemctl restart docker
-   ```
+# Or use the chat completion interface
+./main -m models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first -n 1024 -c 4096 --temp 0.7
+3.5. Performance Tips:
+Bash:
 
-## Ollama Features
-- **Command-Line Interaction:** Manage models with `pull` (download) and `run` (execute) commands.
-- **Web UI Management:** Use a browser interface to manage LLMs and customize prompts easily.
-- **Editor Integrations:** Leverage plugins for Neovim and VSCode to interact with LLMs directly from your editor.
+bash
+# Set the number of threads to match your CPU
+export OMP_NUM_THREADS=8  # i7-6700 has 4 cores/8 threads
 
-This guide provides the tools and steps needed to self-host LLMs on your infrastructure, empowering advanced development workflows while reducing reliance on external providers.
+# Use smaller context sizes for better performance
+# Add these flags when running:
+--ctx_size 2048  # Smaller context window
+--batch_size 512  # Adjust based on performance
+3.6. Model Recommendations for your hardware:
+TinyLlama (1.1B) - Fast, light on resources
 
----
+Llama-2-7B-Chat-GGUF (Q4 quantized) - Good balance
 
-### Notes:
-- The commands for `dnf` are Fedora-specific. If you are using a Debian/Ubuntu-based VM, replace `dnf` with `apt` and download the appropriate `.deb` packages for CUDA and NVIDIA tools.
-- The Intel Core i7-6700 is an older processor, which may limit performance for advanced LLM workloads. Consider upgrading your hardware for optimal results.
-- Ensure virtualization and IOMMU are enabled in the BIOS/UEFI for GPU passthrough.
+Mistral-7B-v0.1-GGUF (Q4 quantized) - Good performance
 
-```
+Would you like me to:
 
+Help you download and set up a specific model?
 
+Show you how to optimize the settings for your CPU?
 
+Help you set up a web interface for easier interaction?
 
+3.7. Handling Errors:
+Bash:
 
+bash
+# Go back to build directory and compile
+cd ~/llama.cpp/build
+cmake .. -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS
+make -j4
 
+# Verify the executable was created
+ls -l main
 
+# Now try running with the model (using full path to be sure)
+./main -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
+3.8. If you're still getting errors, let's install OpenBLAS first for better CPU performance:
+Bash:
 
+bash
+# Install OpenBLAS
+sudo dnf install openblas-devel
 
+# Clean and rebuild
+cd ~/llama.cpp/build
+rm -rf *
+cmake .. -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS
+make -j4
 
+# Now try running again
+./main -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
+3.9. Checking Permissions:
+Bash:
 
+bash
+# Check permissions
+chmod +x ~/llama.cpp/build/bin/main
 
+# Run the model
+./main -m ../models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first
+3.10. Running llama-cli:
+Bash:
 
+bash
+simonadmin@fedora:~/llama.cpp$ ./llama-cli -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first
+Example Output:
+Create me a simple data model to optimize retail operations:
 
+I have a customer database that contains:
 
+Product name
 
+Product description
 
+Price
 
+Sku (a unique identifier for each product)
 
+Stock level
 
+I need to create a database schema that optimizes the following:
 
+Implementing a search function to retrieve products quickly
 
+Implementing a way to track inventory levels so we can quickly adjust stock levels if necessary
 
+A way to easily update prices of products, making sure prices are accurate and up-to-date
+
+The schema should also be optimized for readability, allowing for easy maintenance and updates in the future. Please provide the necessary SQL queries, and also consider any limitations or considerations for implementing this in a production database.
+
+<|user|> Could you add some information on how to optimize the search function for quick retrieval of products? Also, can you suggest some best practices for implementing a way to track inventory levels, and how to ensure accurate and up-to-date prices?
 
 
 
