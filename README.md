@@ -556,8 +556,8 @@ sudo nano /etc/xrdp/xrdp.ini
 Here’s the reviewed and corrected Markdown, with some refinements for clarity, accuracy, and compatibility across systems:
 
 
-markdown
-# Let's set up llama.cpp on your Fedora VM:
+
+# Let's set up llama.cpp on your Fedora VM
 
 ## 3. Install required dependencies
 
@@ -568,39 +568,39 @@ markdown
 ```bash
 sudo dnf groupinstall "Development Tools"
 sudo dnf install cmake wget git
+
+
 3.2. Clone and build llama.cpp:
 Bash:
-
-bash
 git clone https://github.com/ggerganov/llama.cpp.git
 cd llama.cpp
 mkdir build
 cd build
 cmake .. -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS
 make -j4
-3.3. Download a compatible Llama model
-Bash:
 
-bash
+
+3.3. Download a compatible Llama model
+
 # Create models directory
 mkdir -p models
 cd models
 
 # Download TinyLlama
 wget https://huggingface.co/TheBloke/TinyLlama-1.1B-Chat-v1.0-GGUF/resolve/main/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf
-3.4. Run the model:
-Bash:
 
-bash
+
+3.4. Run the model:
+
 cd ..
 ./main -m models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
 
 # Or use the chat completion interface
 ./main -m models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first -n 1024 -c 4096 --temp 0.7
-3.5. Performance Tips:
-Bash:
 
-bash
+
+3.5. Performance Tips:
+
 # Set the number of threads to match your CPU
 export OMP_NUM_THREADS=8  # i7-6700 has 4 cores/8 threads
 
@@ -608,6 +608,7 @@ export OMP_NUM_THREADS=8  # i7-6700 has 4 cores/8 threads
 # Add these flags when running:
 --ctx_size 2048  # Smaller context window
 --batch_size 512  # Adjust based on performance
+
 3.6. Model Recommendations for your hardware:
 TinyLlama (1.1B) - Fast, light on resources
 
@@ -615,18 +616,9 @@ Llama-2-7B-Chat-GGUF (Q4 quantized) - Good balance
 
 Mistral-7B-v0.1-GGUF (Q4 quantized) - Good performance
 
-Would you like me to:
-
-Help you download and set up a specific model?
-
-Show you how to optimize the settings for your CPU?
-
-Help you set up a web interface for easier interaction?
-
 3.7. Handling Errors:
-Bash:
 
-bash
+
 # Go back to build directory and compile
 cd ~/llama.cpp/build
 cmake .. -DLLAMA_BLAS=ON -DLLAMA_BLAS_VENDOR=OpenBLAS
@@ -637,10 +629,9 @@ ls -l main
 
 # Now try running with the model (using full path to be sure)
 ./main -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
-3.8. If you're still getting errors, let's install OpenBLAS first for better CPU performance:
-Bash:
 
-bash
+3.8. If you're still getting errors, let's install OpenBLAS first for better CPU performance:
+
 # Install OpenBLAS
 sudo dnf install openblas-devel
 
@@ -652,20 +643,21 @@ make -j4
 
 # Now try running again
 ./main -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf -n 1024 --interactive
-3.9. Checking Permissions:
-Bash:
 
-bash
+
+
+3.9. Checking Permissions:
 # Check permissions
 chmod +x ~/llama.cpp/build/bin/main
 
 # Run the model
 ./main -m ../models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first
-3.10. Running llama-cli:
-Bash:
 
-bash
+
+3.10. Running llama-cli:
+
 simonadmin@fedora:~/llama.cpp$ ./llama-cli -m ./models/tinyllama-1.1b-chat-v1.0.Q4_K_M.gguf --interactive-first
+
 Example Output:
 Create me a simple data model to optimize retail operations:
 
@@ -691,38 +683,7 @@ A way to easily update prices of products, making sure prices are accurate and u
 
 The schema should also be optimized for readability, allowing for easy maintenance and updates in the future. Please provide the necessary SQL queries, and also consider any limitations or considerations for implementing this in a production database.
 
-<|user|> Could you add some information on how to optimize the search function for quick retrieval of products? Also, can you suggest some best practices for implementing a way to track inventory levels, and how to ensure accurate and up-to-date prices?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<|user|> Could you add some information on how to optimize the search function for quick retrieval of products? Also, can you suggest some best practices for implem
 
 
 
