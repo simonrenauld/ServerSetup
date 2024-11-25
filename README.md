@@ -661,7 +661,7 @@ simonadmin@fedora:~/llama.cpp$ ./llama-cli -m ./models/tinyllama-1.1b-chat-v1.0.
 
 Example Output:
 Create me a simple data model to optimize retail operations:
-
+```
 I have a customer database that contains:
 
 Product name
