@@ -687,17 +687,125 @@ The schema should also be optimized for readability, allowing for easy maintenan
 <|user|> Could you add some information on how to optimize the search function for quick retrieval of products? Also, can you suggest some best practices for implem
 
 ```
+```
 
+4.1 Connecting to Proxmox Server with `virt-manager`
 
+Absolutely, here’s the revised README without the sensitive information:
 
+```markdown
+# Connecting to Proxmox Server with `virt-manager`
 
+This guide provides step-by-step instructions to connect to a Proxmox server using `virt-manager` on a Fedora system, including setting up SSH key-based authentication and configuring the SSH config file.
 
+## Prerequisites
 
+- A Proxmox server with `libvirtd` service running.
+- `virt-manager` installed on your Fedora system.
+- SSH access to the Proxmox server.
 
+## Steps
 
+### 1. Install Required Packages
 
+Ensure `libvirt` packages are installed on your Proxmox server.
 
+```sh
+sudo apt-get update
+sudo apt-get install libvirt-daemon-system libvirt-clients
+```
 
+### 2. Start and Enable `libvirtd` Service
+
+```sh
+sudo systemctl start libvirtd
+sudo systemctl enable libvirtd
+sudo systemctl status libvirtd
+```
+
+### 3. Set Up SSH Key-Based Authentication
+
+1. **Generate SSH Key Pair**:
+
+    ```sh
+    ssh-keygen -t rsa -b 2048
+    ```
+
+2. **Copy Public Key to Proxmox Server**:
+
+    ```sh
+    ssh-copy-id -i ~/.ssh/id_rsa.pub -p [PORT] [USER]@[PROXMOX_SERVER]
+    ```
+
+3. **Verify Connection**:
+
+    ```sh
+    ssh -p [PORT] [USER]@[PROXMOX_SERVER]
+    ```
+
+### 4. Configure SSH Config File
+
+Edit the SSH config file on your Fedora system to include the Proxmox server details.
+
+```sh
+nano ~/.ssh/config
+```
+
+Add the following configuration:
+
+```plaintext
+Host proxmox
+    HostName [PROXMOX_SERVER]
+    Port [PORT]
+    User [USER]
+    IdentityFile ~/.ssh/id_rsa
+```
+
+### 5. Connect Using `virt-manager`
+
+1. **Open `virt-manager`**:
+
+    ```sh
+    sudo virt-manager
+    ```
+
+2. **Add Connection**:
+   - Go to `File` > `Add Connection`.
+   - Set the following:
+     - **Hypervisor**: QEMU/KVM
+     - **Connection**: Remote tunnel over SSH
+     - **Hostname**: `proxmox`
+     - **Username**: `[USER]`
+     - **URI**: `qemu+ssh://[USER]@proxmox/system`
+
+3. **Connect**:
+   - Click `Connect`.
+
+### Troubleshooting
+
+If you encounter issues such as network conflicts, ensure the `default` network is running:
+
+1. **Restart `libvirtd` Service**:
+
+    ```sh
+    sudo systemctl restart libvirtd
+    ```
+
+2. **Check and Start `default` Network**:
+
+    ```sh
+    sudo virsh net-list --all
+    sudo virsh net-start default
+    ```
+
+If connection issues persist, ensure your SSH config file and network settings are correctly configured.
+
+---
+
+Feel free to reach out if you need further assistance!
+```
+
+You can replace `[PROXMOX_SERVER]`, `[PORT]`, and `[USER]` with your specific details as needed. Let me know if there's anything else you need help with! 😊
 
 
 
