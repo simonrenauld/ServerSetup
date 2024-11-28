@@ -715,7 +715,7 @@ sudo apt-get update
 sudo apt-get install libvirt-daemon-system libvirt-clients
 ```
 
-### 2. Start and Enable `libvirtd` Service
+### 4.2 Start and Enable `libvirtd` Service
 
 ```sh
 sudo systemctl start libvirtd
@@ -723,27 +723,27 @@ sudo systemctl enable libvirtd
 sudo systemctl status libvirtd
 ```
 
-### 3. Set Up SSH Key-Based Authentication
+### 4.3. Set Up SSH Key-Based Authentication
 
-1. **Generate SSH Key Pair**:
+ **Generate SSH Key Pair**:
 
     ```sh
     ssh-keygen -t rsa -b 2048
     ```
 
-2. **Copy Public Key to Proxmox Server**:
+**Copy Public Key to Proxmox Server**:
 
     ```sh
     ssh-copy-id -i ~/.ssh/id_rsa.pub -p [PORT] [USER]@[PROXMOX_SERVER]
     ```
 
-3. **Verify Connection**:
+**Verify Connection**:
 
     ```sh
     ssh -p [PORT] [USER]@[PROXMOX_SERVER]
     ```
 
-### 4. Configure SSH Config File
+### 4.4 Configure SSH Config File
 
 Edit the SSH config file on your Fedora system to include the Proxmox server details.
 
@@ -761,283 +761,72 @@ Host proxmox
     IdentityFile ~/.ssh/id_rsa
 ```
 
-### 5. Connect Using `virt-manager`
 
-1. **Open `virt-manager`**:
 
-    ```sh
-    sudo virt-manager
-    ```
+### 5. Accessing Fedora VM on Proxmox from Windows Using Virt-Viewer
 
-2. **Add Connection**:
-   - Go to `File` > `Add Connection`.
-   - Set the following:
-     - **Hypervisor**: QEMU/KVM
-     - **Connection**: Remote tunnel over SSH
-     - **Hostname**: `proxmox`
-     - **Username**: `[USER]`
-     - **URI**: `qemu+ssh://[USER]@proxmox/system`
+This guide provides a step-by-step procedure to set up and access your Fedora VM on Proxmox from a local Windows machine using Virt-Viewer.
 
-3. **Connect**:
-   - Click `Connect`.
+## Prerequisites
 
-### Troubleshooting
+- Proxmox installed with Fedora VM
+- Local Windows machine
 
-If you encounter issues such as network conflicts, ensure the `default` network is running:
 
-1. **Restart `libvirtd` Service**:
+## Steps
 
-    ```sh
-    sudo systemctl restart libvirtd
-    ```
+### 1. Install Required Packages on Fedora VM
 
-2. **Check and Start `default` Network**:
+Ensure your Fedora VM has the necessary packages installed.
 
-    ```sh
-    sudo virsh net-list --all
-    sudo virsh net-start default
-    ```
-
-If connection issues persist, ensure your SSH config file and network settings are correctly configured.
-
----
-
-Feel free to reach out if you need further assistance!
+```
+sudo dnf update
+sudo dnf install qemu-kvm spice-vdagent spice-webdavd
 ```
 
-You can replace `[PROXMOX_SERVER]`, `[PORT]`, and `[USER]` with your specific details as needed. Let me know if there's anything else you need help with! 😊
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+### 5.2. Start and Enable SPICE Service
+```
+sudo systemctl start spice-webdavd
+sudo systemctl enable spice-webdavd
 ```
 
 
-
-
-
-RDP Connect to Linux/Ubuntu Proxmox VM 
-
-Sources: https://www.digitalocean.com/community/tutorials/how-to-enable-remote-desktop-protocol-using-xrdp-on-ubuntu-22-04
-
-
+### 5.3. Configure Firewall on Fedora VM
 ```
-sudo apt update
-
-
-sudo apt install xfce4 xfce4-goodies -y
-
-###  Installing xrdp on Ubuntu
-
-
-
-
-
-
-
+sudo firewall-cmd --permanent --add-service=ssh
+sudo firewall-cmd --permanent --add-port=5900/tcp
+sudo firewall-cmd --permanent --add-port=1234/tcp
+sudo firewall-cmd --reload
 
 ```
 
+### 5.4. Verify Service and Ports
+Check the status of the SPICE service and ensure the necessary ports are open.
+sudo systemctl status spice-webdavd
+sudo firewall-cmd --list-ports
 
-### INSTALLLING UBUNTU VIRTUAL MACHINE ON PROXMOX
 
+### 5.5. Install Virt-Viewer on Windows
+Download and install Virt-Viewer from Virt-Manager's Download Page.
+https://virt-manager.org/
 
+Choose the Win x64 MSI (gpg) version if you are using a 64-bit Windows system.
 
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-cores.jpg" alt="gui" width="400" />
+Choose the Win x86 MSI (gpg) version if you are using a 32-bit Windows system.
 
+6. Connect to Fedora VM Using Virt-Viewer
+Launch Virt-Viewer on your Windows machine.
 
+Enter the IP address of your Fedora VM (100.168.192.100) and the SPICE port (5900).
 
+Click Connect to access your Fedora VM.
 
+7. Troubleshooting
+Firewall Issues: Ensure the firewall on Fedora VM allows incoming connections on the required ports.
+on proxmox check the display in hardware spice should be selected and in options make the SPICE WebDav daemon is installed in the VM and folder and video sharing is selectected
+Service Issues: Ensure SPICE service is running correctly.
 
+Additional Resources
+Virt-Viewer Documentation
 
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/vm-memory.jpg" alt="gui" width="400" />
-
-
-
-
-
-
-<img src="https://github.com/simonrenauld/ServerSetup/blob/main/01_Infrastructure_hardware/screenshots/start-vm.jpg" alt="gui" width="400" />
-Installling nextcloud : 
-
-Advantages
-All the mobile and desktop applications you would expect - Linux (packaged in Fedora,) Windows, Mac, Android, iOS and even F-Droid and Windows Mobile.
-Unlimited free storage space (depends on your hardware)
-
-
-
-
-
-Install Next Cloud Container:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-###  Operating Systems
-
-- Linux: Highly customizable and versatile, suitable for a wide range of applications and hardware.
-- Windows Server: Offers a familiar interface and strong integration with Microsoft products, making it a popular choice for businesses.
-- macOS: Apple's proprietary operating system for its computers, known for its user-friendly interface and integration with Apple devices.
-- Android: A mobile operating system based on Linux, used by most smartphones and tablets.
-- iOS: Apple's mobile operating system, used by iPhones and iPads.
--- Chrome OS: A lightweight operating system developed by Google, primarily designed for web-based applications.
-- FreeBSD: A Unix-like operating system known for its stability and performance.
-- OpenBSD: A BSD-based operating system with a strong focus on security.
-- Solaris: A proprietary operating system developed by Oracle, primarily used for servers and high-performance computing.
-- AIX: A proprietary operating system developed by IBM for its Power Systems hardware.
-- HP-UX: A proprietary operating system developed by HP for its Itanium-based servers.
-
-
-
-####Software and Services
-
-=======
-### Virtual Machines
-
-The choice of virtualization technology depends on your specific needs and environment. Here are some considerations for each option:
-
-Proxmox VE:
-
-Pros:
-- Open-source and free.
-- Supports both KVM and LXC containers.
-- Web-based management interface.
-- Good for enterprise environments.
-
-Cons:
-- Requires a dedicated server.
-- Might be overkill for small-scale or personal projects.
-
-VirtualBox:
-
-Pros:
-- Free and open-source.
-- Easy to set up and use.
-- Good for desktop virtualization.
-
-Cons:
-- Not as performant as bare-metal hypervisors.
-- Limited scalability for enterprise use.
-
-VMware ESXi:
-
-Pros:
-- High performance and reliability.
-- Widely used in enterprise environments.
-- Extensive support and documentation.
-
-Cons:
-- Requires a license for advanced features.
-- Can be complex to set up and manage.
-
-KVM (Kernel-based Virtual Machine):
-
-Pros:
-- Integrated into the Linux kernel.
-- High performance and scalability.
-- Suitable for both personal and enterprise use.
-
-Cons:
-- Requires more manual setup and management.
-- No native GUI management interface (though tools like Virt-Manager can be used).
-
-Recommendations:
-- For Personal Use or Small Projects: VirtualBox is a good choice due to its ease of use and setup.
-- For Enterprise or Large-Scale Deployments: Proxmox VE or VMware ESXi are better suited due to their advanced features and scalability.
-- For Linux Enthusiasts or Custom Solutions: KVM offers flexibility and performance but requires more hands-on management.
-
-###  Software and Services
-
-- Web Servers: Nginx, Apache
-- Databases: MySQL, PostgreSQL, MongoDB
-- Containers: Docker, Kubernetes
-
-###Data Science and Engineering Tools
-
-- Data Science: Jupyter Notebook, RStudio, Anaconda
-- Data Engineering: Apache Hadoop, Apache Spark, Kafka
-
-### AI/ML Frameworks
-
-- TensorFlow, PyTorch, Hugging Face (LLaMA)
-- Continuous Learning Pipeline
-- Document Generation: Automated proposal and roadmap creation tools
-
-### Monitoring and Management Tools
-
-- Monitoring: Prometheus, Grafana, Zabbix
-- Configuration Management: Ansible, Terraform
-- Backup: Rsync, Bacula, Veeam
-
-###Data Governance
-
-- Data Governance Framework
-- Data Cataloging: Apache Atlas, Collibra
-- Data Quality Management: Talend, Informatica, Great Expectations
-- Data Security and Compliance: Encryption, Apache Ranger, AWS IAM
-- Data Lineage: Apache Atlas, Alation
-- Master Data Management (MDM): Informatica MDM, TIBCO
-- Data Governance Platform: Collibra, Informatica
-- Monitoring and Reporting: Grafana, Tableau
-
-### Media Server
-
-- Jellyfin: A great choice for a personal media server. It's open-source, supports various formats, and offers a user-friendly interface
-- FFmpeg, HandBrake: These tools can be used to transcode media files to compatible formats for streaming. While optional, they can be helpful for ensuring smooth playback on different devices.
-- Wi-Fi configuration for projector connectivity
-
-###  Backup System for Phone Photos and Videos
-
-- Nextcloud: A versatile solution for both file storage and syncing. It's easy to set up and offers a mobile app for convenient backups.
-- ZFS/Btrfs: These are powerful file systems known for their reliability and features like snapshotting and data integrity. They're excellent choices for long-term storage.
-- NAS: A Network Attached Storage device can provide additional storage capacity and can be integrated with Nextcloud for increased redundancy.
-
-### AI-Powered Messaging and Calendar Management
-
-- LLaMA AI Model: For natural language processing
-- Custom Chatbot: Integrated with the LLaMA model
-- Google Calendar API/Nextcloud Calendar: For calendar management
-- Nextcloud Tasks: For task management
-- GPU (optional): For AI processing acceleration
-
-### AI for Business and Technical Management
-
-- Data Lakes and Warehousing: For storing and analyzing client data
-- Document Generation: Automated proposals and roadmaps
-- CRM Integration: Track client interactions and projects
-- Project Management Integration: AI-powered task and project tracking
-- AI Dashboard: Centralized control and monitoring interface
-- Enhanced Compute Power: Additional CPUs, RAM, and GPUs
+Fedora Documentation
