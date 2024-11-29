@@ -51,7 +51,7 @@ A **bare metal hypervisor** bridges physical hardware and VMs, allowing seamless
 Proxmox VE is a powerful, adaptable virtualization solution offering **enterprise-grade features** without high costs. It's ideal for managing data centers, educational institutions, or even home labs. 
 Proxmox is notable for its **versatility** and **affordability**, letting you build a fully operational virtual infrastructure for free, with paid options offering extra support and updates.
 
-#### Key Features
+#### 1.3.1. Key Features
 
 - **Free & Open Source**: Community edition is free; paid versions offer additional features for production environments.
 - **Built-in Firewall**: Highly configurable, offering **per-VM firewall controls**, perfect for multi-tenant environments.
@@ -74,7 +74,7 @@ Proxmox VE supports various storage types:
 
 
 
-### 1.3.1. Draw.io Server Infrastructure
+### 1.3.2.  Draw.io Server Infrastructure
 
 The Draw.io Integration extension for Visual Studio Code brings the full functionality of Draw.io diagramming directly into your code editor. Ideal for creating flowcharts, network diagrams, or UML models, this extension lets you diagram without switching between applications. You can save diagrams as .drawio.png or .drawio.svg, preserving editable data within the image's metadata for easy sharing and future editing. With offline support, Git repository integration, and seamless Markdown embedding, this extension enhances team collaboration and workflow visualization, making it a powerful addition to any developer's toolkit.
 
