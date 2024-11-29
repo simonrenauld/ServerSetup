@@ -82,9 +82,6 @@ The Draw.io Integration extension for Visual Studio Code brings the full functio
 
 
 
-
-
-
 ### 2. Installing Proxmox
 
 You will find many documentation around the web. IS NOT that straight forward.I will not give more details explainations step by step. Because its constantly updating and 
