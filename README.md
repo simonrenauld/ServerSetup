@@ -39,9 +39,6 @@ Many businesses start by managing data in Excel files, and as they grow, they tr
 There's also a tendency for different departments to focus only on the most successful aspects of the company, creating a bias in how growth is perceived. This is where virtualization and tools like Proxmox come into play, enabling us to build a perfect testing lab that preserves both success and failure, allowing for deeper insights and innovation.
 
 
-
-
-
 ### 1.3. Virtualization and Proxmox VE
 
 Even though it's stored somewhere globally, you'll need to virtualize access to your physical drives. At the core of this process is the **hypervisor**—a key software, hardware, or firmware layer that manages and creates virtual machines (VMs). 
