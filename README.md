@@ -826,7 +826,102 @@ Firewall Issues: Ensure the firewall on Fedora VM allows incoming connections on
 on proxmox check the display in hardware spice should be selected and in options make the SPICE WebDav daemon is installed in the VM and folder and video sharing is selectected
 Service Issues: Ensure SPICE service is running correctly.
 
-Additional Resources
-Virt-Viewer Documentation
 
-Fedora Documentation
+Sure! Here are the commands and steps to optimize your Fedora VM and analyze its performance, formatted to match your example:
+
+### 5.6. Optimize Virtual Machine Performance
+
+Install `spice-vdagent` and `qemu-guest-agent`:
+```bash
+sudo dnf install spice-vdagent qemu-guest-agent
+sudo systemctl enable spice-vdagent --now
+sudo systemctl enable qemu-guest-agent --now
+```
+
+Configure Video Memory:
+```bash
+sudo nano /etc/pve/qemu-server/104.conf
+```
+Add or modify the following lines:
+```conf
+vga: qxl,mem=128
+spice: enable=1
+```
+
+Restart the VM:
+```bash
+sudo systemctl reboot
+```
+
+Network Performance Test:
+Install and Run `iperf3`:
+On the host (server):
+```bash
+sudo dnf install iperf3
+iperf3 -s
+```
+On the VM (client):
+```bash
+sudo dnf install iperf3
+iperf3 -c <host-ip-address>
+```
+
+Update and Install Necessary Packages:
+Update System:
+```bash
+sudo dnf update
+sudo dnf install kernel-modules-extra
+sudo reboot
+```
+
+Optimize Windows Machine for SPICE:
+Install Latest Spice Guest Tools:
+Download and install from [Spice Space website](https://www.spice-space.org/download.html).
+
+Adjust Remote Viewer Settings:
+- Open Remote Viewer.
+- Go to **Edit** > **Preferences**.
+- Adjust image quality and enable compression/video streaming.
+
+Optimize Network Settings on Windows:
+- Ensure a wired connection.
+- Configure network adapter settings for optimal performance.
+
+Performance Analysis:
+Run Benchmarks:
+```bash
+phoronix-test-suite benchmark pts/compress-7zip
+phoronix-test-suite benchmark pts/compilebench
+phoronix-test-suite benchmark pts/ramspeed
+phoronix-test-suite benchmark pts/iperf
+```
+
+View Results:
+```bash
+phoronix-test-suite result-file <result-name>
+phoronix-test-suite result-view <result-name>
+```
+
+Generate Detailed Reports:
+```bash
+phoronix-test-suite result-view <result-name>
+```
+
+Troubleshooting and Monitoring:
+Monitor System Performance:
+```bash
+top
+htop
+iotop
+```
+
+Disable Unnecessary Services:
+```bash
+sudo systemctl disable <service-name>
+```
+
+Switch Display Server:
+- Log out and select "GNOME on Xorg" at the login screen.
+
+By following these commands and steps, you can optimize the performance of your Fedora VM and analyze its performance effectively. Let me know if you need any further assistance!
+
